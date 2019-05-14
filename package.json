@@ -2,10 +2,6 @@
   "name": "simple-mern-passport",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "npm": "6.9.0",
-    "node": "11.10.1"
-  },
   "dependencies": {
     "axios": "^0.17.1",
     "bcryptjs": "^2.4.3",
@@ -29,10 +25,12 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "api": "nodemon ./server/server.js",
-    "dev": "concurrently \"react-scripts start\" \"nodemon server/server.js\""
+    "dev": "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "devDependencies": {
     "concurrently": "^3.5.1",
     "nodemon": "^1.17.5"
-  }
+  },
+  "proxy": "http://localhost:8080"
 }
