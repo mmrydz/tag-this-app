@@ -1,42 +1,28 @@
 {
   "name": "tag-this-app",
-  "version": "0.1.0",
-  "private": true,
-  "engines": {
-    "npm": "6.9.0",
-    "node": "11.10.1"
-  },
-  "dependencies": {
-    "axios": "^0.17.1",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.2",
-    "connect-mongo": "^2.0.1",
-    "express": "^4.16.2",
-    "express-session": "^1.15.6",
-    "mongoose": "^5.0.2",
-    "morgan": "^1.9.0",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
-    "path": "^0.12.7",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.0",
-    "spectre.css": "^0.5.0"
-  },
+  "version": "1.0.0",
+  "description": "MERN inventory management with passport authentication",
+  "main": "server.js",
+  "proxy": "http://localhost:3001",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "seed": "node scripts/seedDB.js",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "api": "nodemon ./server/server.js",
-    "dev": "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "devDependencies": {
-    "concurrently": "^3.5.1",
-    "nodemon": "^1.17.5"
-  },
-  "proxy": "http://localhost:8080"
+  "author": "Arthur Doelp, Ben Leone, Tim Look, Meg Rydzewski",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.0.1",
+    "express": "^4.16.4",
+    "is-empty": "^1.2.0",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.3.11",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^10.9.0"
+  }
 }
