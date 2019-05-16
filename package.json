@@ -5,6 +5,7 @@
   "main": "server.js",
   "proxy": "http://localhost:3001",
   "scripts": {
+    "install": "npm install && cd client && npm install",
     "client-install": "npm install --prefix client",
     "start": "node server.js",
     "server": "node server.js",
