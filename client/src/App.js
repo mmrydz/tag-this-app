@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { Route, Link } from 'react-router-dom'
 // components
-import Signup from './components/sign-up'
-import LoginForm from './components/login-form'
-import Navbar from './components/navbar'
-import Home from './components/home'
+import Signup from './components/signup-form/index'
+import LoginForm from './components/login-form/index'
+import Navbar from './components/Navbar/index'
+//import Home from './components/home'
 
 class App extends Component {
   constructor() {
@@ -59,9 +59,9 @@ class App extends Component {
           <p>Join the party, {this.state.username}!</p>
         }
         {/* Routes to different components */}
-        <Route
+        {/* <Route
           exact path="/"
-          component={Home} />
+          component={Home} /> */}
         <Route
           path="/login"
           render={() =>
