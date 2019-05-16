@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
+//import { Redirect } from 'react-router-dom'
 import { Route, Link } from 'react-router-dom'
 //import logo from '../logo.svg';
 //import '../App.css';
@@ -36,6 +36,7 @@ class Navbar extends Component {
       <div>
 
         <header className="navbar App-header" id="nav-container">
+        <Route>
           <div className="col-4" >
             {loggedIn ? (
               <section className="navbar-section">
@@ -57,6 +58,7 @@ class Navbar extends Component {
                 </section>
               )}
           </div>
+          </Route>
           <div className="col-4 col-mr-auto">
             <div id="top-filler"></div>
             {/* <img src={logo} className="App-logo" alt="logo" /> */}

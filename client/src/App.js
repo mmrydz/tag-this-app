@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { Route, Link } from 'react-router-dom'
 // components
-import Signup from './components/signup-form/index'
-import LoginForm from './components/login-form/index'
+import Register from './components/auth/register/index'
+import LoginForm from './components/auth/login/index'
 import Navbar from './components/Navbar/index'
 //import Home from './components/home'
 
@@ -72,7 +72,7 @@ class App extends Component {
         <Route
           path="/signup"
           render={() =>
-            <Signup/>}
+            <Register/>}
         />
 
       </div>
