@@ -14,16 +14,17 @@ app.use(
   })
 );
 app.use(bodyParser.json());
+// Serve Up Static Assets (usually on Heroku) -----------------
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 // DB Config
 const db = require("./config/keys").mongoURI;
 
 // Connect to MongoDB
 mongoose
-  .connect(
-    db,
-    { useNewUrlParser: true }
-  )
+  .connect(db, { useNewUrlParser: true })
   .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
 
