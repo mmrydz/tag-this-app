@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Route } from "react-router-dom";
 // components
-import Signup from "./components/signup-form/index";
-import LoginForm from "./components/login-form/index";
+
+import Register from "./components/auth/register/index";
+import LoginForm from "./components/auth/login/index";
 import Navbar from "./components/Navbar/index";
 //import Home from './components/home'
 
@@ -63,7 +64,13 @@ class App extends Component {
           path="/login"
           render={() => <LoginForm updateUser={this.updateUser} />}
         />
-        <Route path="/signup" render={() => <Signup />} />
+
+        <Route
+          path="/signup"
+          render={() =>
+            <Register/>}
+        />
+
       </div>
     );
   }
