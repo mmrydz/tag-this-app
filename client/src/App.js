@@ -6,18 +6,58 @@ import Signup from './components/sign-up'
 import LoginForm from './components/login-form'
 import Navbar from './components/navbar'
 import Home from './components/home'
+import Items from './components/Items'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
       loggedIn: false,
-      username: null
+      username: null,
+      items: [
+        {
+          id: 1,
+          name: "tent",
+          description: "Put a lot of text and words in this space to describe the item, blah blah blah",
+          image: "https://www.rei.com/media/product/130893",
+          department: "outdoor",
+          favorite: false,
+          featured: false
+        },
+        {
+          id: 2,
+          name: "bike",
+          description: "Put a lot of text and words in this space to describe the item, blah blah blah",
+          image: "https://images-na.ssl-images-amazon.com/images/I/915c7fzsEBL._SX425_.jpg",
+          department: "outdoor",
+          favorite: false,
+          featured: true
+        },
+        {
+          id: 3,
+          name: "frank and beans",
+          description: "Put a lot of text and words in this space to describe the item, blah blah blah",
+          image: "https://images-na.ssl-images-amazon.com/images/I/51tTHFbUkRL.jpg",
+          department: "grocery",
+          favorite: false,
+          featured: false
+        },
+        {
+          id: 4,
+          name: "pants",
+          description: "Put a lot of text and words in this space to describe the item, blah blah blah", 
+          image: "https://images-na.ssl-images-amazon.com/images/I/71uCuqRv43L._UY445_.jpg",
+          department: "clothing",
+          favorite: false,
+          featured: false
+        }
+      ]
     }
 
     this.getUser = this.getUser.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
     this.updateUser = this.updateUser.bind(this)
+    this.saveFavorite = this.saveFavorite.bind(this)
   }
 
   componentDidMount() {
@@ -49,6 +89,18 @@ class App extends Component {
     })
   }
 
+  saveFavorite = (id) => {
+    console.log(id + 'favorite saved! TEST from app.js')
+    this.setState({ 
+      items: this.state.items.map(item => {
+        if(item.id === id) {
+          item.favorite = !item.favorite
+        }
+        return item;
+      })  
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -73,6 +125,15 @@ class App extends Component {
           path="/signup"
           render={() =>
             <Signup/>}
+        />
+        <Route
+          path="/items"
+          render={() =>
+            <Items
+              items={this.state.items}
+              saveFavorite={this.saveFavorite}
+              isFeatured={this.isFeatured}
+            />}
         />
 
       </div>
