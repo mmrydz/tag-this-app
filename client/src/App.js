@@ -113,7 +113,13 @@ class App extends Component {
         {/* Routes to different components */}
         <Route
           exact path="/"
-          component={Home} />
+          render={() =>
+            <Items
+              items={this.state.items}
+              saveFavorite={this.saveFavorite}
+              isFeatured={this.isFeatured}
+            />}
+        />
         <Route
           path="/login"
           render={() =>
