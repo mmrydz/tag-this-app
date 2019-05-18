@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // import { Redirect } from 'react-router-dom'
 import { Route, Link } from 'react-router-dom'
-import logo from '../logo.svg';
+//import logo from '../logo.svg';
 import '../App.css';
 import axios from 'axios'
 
@@ -59,8 +59,8 @@ class Navbar extends Component {
                     </div>
                     <div className="col-4 col-mr-auto">
                     <div id="top-filler"></div>
-                        <img src={logo} className="App-logo" alt="logo" />
-                        <h1 className="App-title">Tag This App</h1>
+                        <img src="../logo.png" className="App-logo" alt="logo" />
+                        {/* <h1 className="App-title">Tag This App</h1> */}
                     </div>
                 </header>
             </div>
