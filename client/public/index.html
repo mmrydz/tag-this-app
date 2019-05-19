@@ -52,6 +52,11 @@
         width: 1px;
         overflow: hidden;
       }
+
+      .footer {
+        display: flex;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -70,43 +75,38 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <footer>
-      <center>
-        See the code:
-        <a href="https://github.com/mmrydz/tag-this-app"
-          ><img src="github.ico" alt="github" style="border:none;"
-        /></a>
-        Share this:
-        <ul class="share-buttons">
-          <li>
-            <a
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftag-this-app.herokuapp.com%2F&quote=Tag%20This%20App"
-              title="Share on Facebook"
-              target="_blank"
-              ><img
-                alt="Share on Facebook"
-                src="images/flat_web_icon_set/color/Facebook.png"
-            /></a>
-          </li>
-          <li>
-            <a
-              href="https://twitter.com/intent/tweet?source=https%3A%2F%2Ftag-this-app.herokuapp.com%2F&text=Tag%20This%20App:%20https%3A%2F%2Ftag-this-app.herokuapp.com%2F"
-              target="_blank"
-              title="Tweet"
-              ><img alt="Tweet" src="images/flat_web_icon_set/color/Twitter.png"
-            /></a>
-          </li>
-          <li>
-            <a
-              href="mailto:?subject=Tag%20This%20App&body=:%20https%3A%2F%2Ftag-this-app.herokuapp.com%2F"
-              target="_blank"
-              title="Send email"
-              ><img
-                alt="Send email"
-                src="images/flat_web_icon_set/color/Email.png"
-            /></a>
-          </li>
-        </ul>
-      </center>
+      <hr />
+      <ul class="share-buttons">
+        <li>
+          <a
+            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftag-this-app.herokuapp.com%2F&quote=Tag%20This%20App"
+            title="Share on Facebook"
+            target="_blank"
+            ><img alt="Share on Facebook" src="/Facebook.png"
+          /></a>
+        </li>
+        <li>
+          <a
+            href="https://twitter.com/intent/tweet?source=https%3A%2F%2Ftag-this-app.herokuapp.com%2F&text=Tag%20This%20App:%20https%3A%2F%2Ftag-this-app.herokuapp.com%2F"
+            target="_blank"
+            title="Tweet"
+            ><img alt="Tweet" src="/Twitter.png"
+          /></a>
+        </li>
+        <li>
+          <a
+            href="mailto:?subject=Tag%20This%20App&body=:%20https%3A%2F%2Ftag-this-app.herokuapp.com%2F"
+            target="_blank"
+            title="Send email"
+            ><img alt="Send email" src="/Email.png"
+          /></a>
+        </li>
+        <li>
+          <a href="https://github.com/mmrydz/tag-this-app"
+            ><img src="github.ico" alt="github" style="border:none;"
+          /></a>
+        </li>
+      </ul>
     </footer>
     <!-- Bootstrap JavaScript Import -->
     <script
