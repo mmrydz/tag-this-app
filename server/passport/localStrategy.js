@@ -21,8 +21,4 @@ const strategy = new LocalStrategy(
 	}
 )
 
-<<<<<<< HEAD
 module.exports = strategy
-=======
-module.exports = strategy
->>>>>>> master
