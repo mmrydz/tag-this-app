@@ -1,34 +1,59 @@
 {
-  "name": "simple-mern-passport",
-  "version": "0.1.0",
+  "name": "tag-this-db",
+  "version": "1.0.0",
   "private": true,
+  "proxy": "http://localhost:3001/",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build",
+    "eject": "react-scripts eject",
+    "test": "react-scripts test --env=jsdom",
+    "start:prod": "node server/server.js",
+    "start:dev": "concurrently \"nodemon server/server.js --ignore 'client/*'\" \"npm run client\"",
+    "api": "nodemon ./server/server.js"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.7"
+  },
   "dependencies": {
-    "axios": "^0.17.1",
+    "aws-amplify": "^1.1.28",
+    "aws-sdk": "^2.458.0",
+    "axios": "^0.18.0",
+    "bluebird": "^3.5.4",
+    "express": "^4.17.0",
+    "file-type": "^11.0.0",
+    "fs": "0.0.1-security",
+    "if-env": "^1.0.4",
+    "mongoose": "^5.3.16",
+    "multiparty": "^4.2.1",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-scripts": "^2.1.1",
+    "react-router-dom": "^4.3.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "connect-mongo": "^2.0.1",
-    "express": "^4.16.2",
     "express-session": "^1.15.6",
-    "if-env": "^1.0.4",
-    "mongoose": "^5.0.2",
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "spectre.css": "^0.5.0"
   },
-  "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server/server.js",
-    "start:dev": "concurrently \"nodemon server/server.js --ignore 'client/*'\" \"npm run client\"",
-    "api": "nodemon ./server/server.js",
-    "client": "cd client && npm run start",
-    "seed": "node scripts/seedDB.js",
-    "install": "cd client && npm install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+  "engines": {
+    "node": "10.15.3",
+    "npm": "6.4.1"
   },
-  "devDependencies": {
-    "concurrently": "^3.5.1",
-    "nodemon": "^1.17.5"
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

@@ -20,4 +20,8 @@ mongoose.connect(uri, { useNewUrlParser: true }).then(
   }
 );
 
+<<<<<<< HEAD
 module.exports = mongoose.connection;
+=======
+module.exports = mongoose.connection;
+>>>>>>> master

@@ -1,10 +1,56 @@
+// import React from "react";
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import Navbar from "./components/Navbar";
+// import ItemManagePage from "./pages/itemManage";
+// import AdminHomePage from "./pages/admin-home";
+// import UpdateItemPage from "./pages/updateform";
+// //import { withAuthenticator } from "aws-amplify-react";
+// //import { Storage } from "aws-amplify";
+
+
+// function App() {
+
+
+
+//   return (
+//     <Router>
+//       <div>
+//         <Navbar />
+//         <Switch>
+//           <Route
+//             exact path="/adminhome"
+//             render={() => <AdminHomePage />}
+//           />
+//           <Route
+//             exact path="/manage"
+//             render={() => <ItemManagePage />}
+//           />
+//           <Route
+//             exact path="/update"
+//             render={() => <UpdateItemPage />}
+//           />
+//         </Switch>
+//       </div>
+//     </Router>
+//   );
+// }
+
+// export default App;
+
+
+
 import React, { Component } from 'react';
 import axios from 'axios'
-import { Route, Link } from 'react-router-dom'
+//import { Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// pages
+import ItemManagePage from "./pages/itemManage";
+import AdminHomePage from "./pages/admin-home";
+import UpdateItemPage from "./pages/updateform";
 // components
 import Signup from './components/sign-up'
 import LoginForm from './components/login-form'
-import Navbar from './components/navbar'
+import Navbar from './components/Navbar/index'
 import Home from './components/home'
 import Items from './components/Items'
 
@@ -45,7 +91,7 @@ class App extends Component {
         {
           id: 4,
           name: "pants",
-          description: "Put a lot of text and words in this space to describe the item, blah blah blah", 
+          description: "Put a lot of text and words in this space to describe the item, blah blah blah",
           image: "https://images-na.ssl-images-amazon.com/images/I/71uCuqRv43L._UY445_.jpg",
           department: "clothing",
           favorite: false,
@@ -64,7 +110,7 @@ class App extends Component {
     this.getUser()
   }
 
-  updateUser (userObject) {
+  updateUser(userObject) {
     this.setState(userObject)
   }
 
@@ -91,58 +137,72 @@ class App extends Component {
 
   saveFavorite = (id) => {
     console.log(id + 'favorite saved! TEST from app.js')
-    this.setState({ 
+    this.setState({
       items: this.state.items.map(item => {
-        if(item.id === id) {
+        if (item.id === id) {
           item.favorite = !item.favorite
         }
         return item;
-      })  
+      })
     });
   }
 
   render() {
     return (
-      <div className="App">
-   
-        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-        {/* greet user if logged in: */}
-        {this.state.loggedIn &&
-          <p>Join the party, {this.state.username}!</p>
-        }
-        {/* Routes to different components */}
-        <Route
-          exact path="/"
-          render={() =>
-            <Items
-              items={this.state.items}
-              saveFavorite={this.saveFavorite}
-              isFeatured={this.isFeatured}
-            />}
-        />
-        <Route
-          path="/login"
-          render={() =>
-            <LoginForm
-              updateUser={this.updateUser}
-            />}
-        />
-        <Route
-          path="/signup"
-          render={() =>
-            <Signup/>}
-        />
-        <Route
-          path="/items"
-          render={() =>
-            <Items
-              items={this.state.items}
-              saveFavorite={this.saveFavorite}
-              isFeatured={this.isFeatured}
-            />}
-        />
-
-      </div>
+      <Router>
+        <div className="App">
+          <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+          {/* greet user if logged in: */}
+          {this.state.loggedIn &&
+            <p>Join the party, {this.state.username}!</p>
+          }
+          {/* Routes to different components */}
+          <Switch>
+            <Route
+              exact path="/adminhome"
+              render={() => <AdminHomePage />}
+            />
+            <Route
+              exact path="/manage"
+              render={() => <ItemManagePage />}
+            />
+            <Route
+              exact path="/update"
+              render={() => <UpdateItemPage />}
+            />
+            <Route
+              exact path="/"
+              render={() =>
+                <Items
+                  items={this.state.items}
+                  saveFavorite={this.saveFavorite}
+                  isFeatured={this.isFeatured}
+                />}
+            />
+            <Route
+              path="/login"
+              render={() =>
+                <LoginForm
+                  updateUser={this.updateUser}
+                />}
+            />
+            <Route
+              path="/signup"
+              render={() =>
+                <Signup />}
+            />
+            <Route
+              path="/items"
+              render={() =>
+                <Items
+                  items={this.state.items}
+                  saveFavorite={this.saveFavorite}
+                  isFeatured={this.isFeatured}
+                />}
+            />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

@@ -1,0 +1,9 @@
+.button-container {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.button-container button {
+    text-align: center;
+    margin: 15% 25% 15% 25%;
+}
