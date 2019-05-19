@@ -20,8 +20,8 @@ const user = require('./routes/user')
 
 // configure the keys for accessing AWS
 AWS.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  accessKeyId: "",
+  secretAccessKey: ""
 });
 
 // configure AWS to work with promises
@@ -82,6 +82,24 @@ app.post('/test-upload', (request, response) => {
       }
     });
 });
+
+// Sessions
+app.use(
+	session({
+		secret: 'fraggle-rock', //pick a random string to make the hash that is generated secure
+		store: new MongoStore({ mongooseConnection: dbConnection }),
+		resave: false, //required
+		saveUninitialized: false //required
+	})
+)
+
+// Passport
+app.use(passport.initialize())
+app.use(passport.session()) // calls the deserializeUser
+
+
+// Routes
+app.use('/user', user)
 
 // Connect to the MongoDB Database ----------------------------
 const MONGODB_URI =

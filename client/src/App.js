@@ -51,7 +51,7 @@ import UpdateItemPage from "./pages/updateform";
 import Signup from './components/sign-up'
 import LoginForm from './components/login-form'
 import Navbar from './components/Navbar/index'
-import Home from './components/home'
+//import Home from './components/home'
 import Items from './components/Items'
 
 class App extends Component {
