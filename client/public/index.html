@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
     <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -20,29 +23,36 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Tag This App</title>
+
+    <!-- Bootstrap CDN -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
     <style>
-  ul.share-buttons{
-  list-style: none;
-  padding: 0;
-}
+      ul.share-buttons {
+        list-style: none;
+        padding: 0;
+      }
 
-ul.share-buttons li{
-  display: inline;
-}
+      ul.share-buttons li {
+        display: inline;
+      }
 
-ul.share-buttons .sr-only{
-  position: absolute;
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px);
-  padding: 0;
-  border: 0;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-}
- </style>
-      
-      </style>
+      ul.share-buttons .sr-only {
+        position: absolute;
+        clip: rect(1px 1px 1px 1px);
+        clip: rect(1px, 1px, 1px, 1px);
+        padding: 0;
+        border: 0;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+      }
+    </style>
   </head>
   <body>
     <noscript>
@@ -60,14 +70,59 @@ ul.share-buttons .sr-only{
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <footer>
-      <center>See the code: <a href="https://github.com/mmrydz/tag-this-app"><img src="github.ico" alt="github" style="border:none;" /></a>
-      Share this:
-      <ul class="share-buttons">
-        <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftag-this-app.herokuapp.com%2F&quote=Tag%20This%20App" title="Share on Facebook" target="_blank"><img alt="Share on Facebook" src="images/flat_web_icon_set/color/Facebook.png" /></a></li>
-        <li><a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Ftag-this-app.herokuapp.com%2F&text=Tag%20This%20App:%20https%3A%2F%2Ftag-this-app.herokuapp.com%2F" target="_blank" title="Tweet"><img alt="Tweet" src="images/flat_web_icon_set/color/Twitter.png" /></a></li>
-        <li><a href="mailto:?subject=Tag%20This%20App&body=:%20https%3A%2F%2Ftag-this-app.herokuapp.com%2F" target="_blank" title="Send email"><img alt="Send email" src="images/flat_web_icon_set/color/Email.png" /></a></li>
-      </ul>
-</center>
+      <center>
+        See the code:
+        <a href="https://github.com/mmrydz/tag-this-app"
+          ><img src="github.ico" alt="github" style="border:none;"
+        /></a>
+        Share this:
+        <ul class="share-buttons">
+          <li>
+            <a
+              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftag-this-app.herokuapp.com%2F&quote=Tag%20This%20App"
+              title="Share on Facebook"
+              target="_blank"
+              ><img
+                alt="Share on Facebook"
+                src="images/flat_web_icon_set/color/Facebook.png"
+            /></a>
+          </li>
+          <li>
+            <a
+              href="https://twitter.com/intent/tweet?source=https%3A%2F%2Ftag-this-app.herokuapp.com%2F&text=Tag%20This%20App:%20https%3A%2F%2Ftag-this-app.herokuapp.com%2F"
+              target="_blank"
+              title="Tweet"
+              ><img alt="Tweet" src="images/flat_web_icon_set/color/Twitter.png"
+            /></a>
+          </li>
+          <li>
+            <a
+              href="mailto:?subject=Tag%20This%20App&body=:%20https%3A%2F%2Ftag-this-app.herokuapp.com%2F"
+              target="_blank"
+              title="Send email"
+              ><img
+                alt="Send email"
+                src="images/flat_web_icon_set/color/Email.png"
+            /></a>
+          </li>
+        </ul>
+      </center>
     </footer>
+    <!-- Bootstrap JavaScript Import -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
