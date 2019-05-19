@@ -59,7 +59,7 @@ class Navbar extends Component {
                     </div>
                     <div className="col-4 col-mr-auto">
                     <div id="top-filler"></div>
-                        <img src="../logo.png" className="App-logo" alt="logo" />
+                        <img src="../logo1.png" className="App-logo" alt="logo" />
                         {/* <h1 className="App-title">Tag This App</h1> */}
                     </div>
                 </header>
@@ -69,5 +69,6 @@ class Navbar extends Component {
 
     }
 }
+
 
 export default Navbar

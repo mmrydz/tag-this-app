@@ -20,6 +20,29 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Tag This App</title>
+    <style>
+  ul.share-buttons{
+  list-style: none;
+  padding: 0;
+}
+
+ul.share-buttons li{
+  display: inline;
+}
+
+ul.share-buttons .sr-only{
+  position: absolute;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+ </style>
+      
+      </style>
   </head>
   <body>
     <noscript>
@@ -37,8 +60,14 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <footer>
-      <center><a href="https://github.com/mmrydz/tag-this-app"><img src="github.ico" alt="github" style="border:none;" /></a></center>
-
+      <center>See the code: <a href="https://github.com/mmrydz/tag-this-app"><img src="github.ico" alt="github" style="border:none;" /></a>
+      Share this:
+      <ul class="share-buttons">
+        <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftag-this-app.herokuapp.com%2F&quote=Tag%20This%20App" title="Share on Facebook" target="_blank"><img alt="Share on Facebook" src="images/flat_web_icon_set/color/Facebook.png" /></a></li>
+        <li><a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Ftag-this-app.herokuapp.com%2F&text=Tag%20This%20App:%20https%3A%2F%2Ftag-this-app.herokuapp.com%2F" target="_blank" title="Tweet"><img alt="Tweet" src="images/flat_web_icon_set/color/Twitter.png" /></a></li>
+        <li><a href="mailto:?subject=Tag%20This%20App&body=:%20https%3A%2F%2Ftag-this-app.herokuapp.com%2F" target="_blank" title="Send email"><img alt="Send email" src="images/flat_web_icon_set/color/Email.png" /></a></li>
+      </ul>
+</center>
     </footer>
   </body>
 </html>
