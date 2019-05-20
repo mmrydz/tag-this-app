@@ -60,6 +60,8 @@ class Navbar extends Component {
                                 <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
                                 <span className="text-secondary">logout</span></Link>
 
+                                <Link to="/adminhome" className="btn btn-link text-secondary" >
+                                <span className="text-secondary">admin</span></Link>
                             </section>
                         ) : (
                                 <section className="navbar-section">
@@ -68,7 +70,7 @@ class Navbar extends Component {
                                         </Link>
                                     <Link to="/login" className="btn btn-link text-secondary">
                                     <span className="text-secondary">login</span>
-				</Link>
+				                    </Link>
                                     <Link to="/signup" className="btn btn-link">
                                     <span className="text-secondary">sign up</span>
 				</Link>
