@@ -41,23 +41,23 @@ class ManageItem extends Component {
           });
         };
        
-        handleFormSubmit = event => {
-          event.preventDefault();
-          if (this.state.barcode) {
-            API.saveItem({
-              barcode: this.state.barcode,
-              name: this.state.name,
-              price: this.state.price,
-              category: this.state.category,
-              quality: this.state.quality,
-              featured: this.state.featured,
-              image: this.state.image,
-              notes: this.state.notes
-            })
-              .then(res => this.loadItems())
-              .catch(err => console.log(err));
-          }
-        };
+        // handleFormSubmit = event => {
+        //   event.preventDefault();
+        //   if (this.state.barcode) {
+        //     API.saveItem({
+        //       barcode: this.state.barcode,
+        //       name: this.state.name,
+        //       price: this.state.price,
+        //       category: this.state.category,
+        //       quality: this.state.quality,
+        //       featured: this.state.featured,
+        //       image: this.state.image,
+        //       notes: this.state.notes
+        //     })
+        //       .then(res => this.loadItems())
+        //       .catch(err => console.log(err));
+        //   }
+        // };
 
   constructor() {
     super();
