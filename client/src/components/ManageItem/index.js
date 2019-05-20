@@ -3,17 +3,66 @@ import axios from "axios";
 import "./style.css";
 
 class ManageItem extends Component {
+
+        state = {
+          items: [],
+          barcode: "",
+          name: "",
+          price: "",
+          category: "",
+          quality: "",
+          featured: "",
+          image: "",
+          notes: ""
+        };
+       
+        // componentDidMount() {
+        //   this.loadItems();
+        // }
+       
+        // loadItems = () => {
+        //   API.getItems()
+        //     .then(res =>
+        //       this.setState({ items: res.data,   barcode: "", name: "", price: "", category: "", quality: "", featured: "", image: "", notes: "" })
+        //     )
+        //     .catch(err => console.log(err));
+        // };
+       
+        // deleteItem = id => {
+        //   API.deleteItem(id)
+        //     .then(res => this.loadItems())
+        //     .catch(err => console.log(err));
+        // };
+       
+        handleInputChange = event => {
+          const { name, value } = event.target;
+          this.setState({
+            [name]: value
+          });
+        };
+       
+        handleFormSubmit = event => {
+          event.preventDefault();
+          if (this.state.barcode) {
+            API.saveItem({
+              barcode: this.state.barcode,
+              name: this.state.name,
+              price: this.state.price,
+              category: this.state.category,
+              quality: this.state.quality,
+              featured: this.state.featured,
+              image: this.state.image,
+              notes: this.state.notes
+            })
+              .then(res => this.loadItems())
+              .catch(err => console.log(err));
+          }
+        };
+
   constructor() {
     super();
     this.state = {
-      barcode: "",
-      name: "",
-      price: "",
-      category: "",
-      quality: "",
-      featured: "",
-      image: "",
-      notes: ""
+      file: null
     };
   }
 
@@ -46,7 +95,7 @@ class ManageItem extends Component {
       <div className="container">
         <div className="row">
           <div className="col-sm-12">
-            <form onSubmit={this.submitFile}>
+            <form onSubmit={this.handleFormSubmit}>
               <div className="form-title">
                 <h2>Add Item Details</h2>
               </div>
