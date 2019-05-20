@@ -50,3 +50,7 @@ export function QualityInput(props) {
     </div>
   );
 }
+
+export function FormBtn(props) {
+  return <button {...props}>{props.children}</button>;
+}
