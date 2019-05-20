@@ -15,13 +15,15 @@ const fs = require('fs');
 const fileType = require('file-type');
 const bluebird = require('bluebird');
 const multiparty = require('multiparty');
+const config = require('dotenv').config();
+console.log(config);
 // Route requires
 const user = require('./routes/user')
 
 // configure the keys for accessing AWS
 AWS.config.update({
-  accessKeyId: "",
-  secretAccessKey: ""
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 });
 
 // configure AWS to work with promises
@@ -35,7 +37,7 @@ const uploadFile = (buffer, name, type) => {
   const params = {
     ACL: 'public-read',
     Body: buffer,
-    Bucket: "tag-this-app-adoelp",
+    Bucket: process.env.S3_BUCKET,
     ContentType: type.mime,
     Key: `${name}.${type.ext}`
   };
