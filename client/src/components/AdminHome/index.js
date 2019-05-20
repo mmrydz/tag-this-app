@@ -5,19 +5,18 @@ class AdminHome extends Component {
 
     goToCreateNew = () => window.location.href = "/manage";
     goToUpdateExisting = () => window.location.href = "/update";
+    goToViewItems = () => window.location.href = "/";
 
     render() {
         return (
             <div className="container button-container">
-                <h2>Options</h2>
                 <div className="row">
-                    <button type="submit" className="btn-lg btn-primary" onClick={() => this.goToCreateNew()}>Create New Item</button>
-                </div>
-                <div className="row">
-                    <button type="submit" className="btn-lg btn-primary">View all items</button>
-                </div>
-                <div className="row">
-                    <button type="submit" className="btn-lg btn-primary" onClick={() => this.goToUpdateExisting()}>Update Existing Items</button>
+                    <div className="col-sm-12 text-center">
+                        <h2>Options</h2>
+                        <button type="submit" className="btn-lg btn-primary" onClick={() => this.goToCreateNew()}>Create New Item</button>
+                        <button type="submit" className="btn-lg btn-primary" onClick={() => this.goToViewItems()}>View all items</button>
+                        <button type="submit" className="btn-lg btn-primary" onClick={() => this.goToUpdateExisting()}>Update Existing Items</button>
+                    </div>
                 </div>
             </div>
         );
