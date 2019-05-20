@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import ManageItem from "../components/ManageItem/index"
+import { Input } from "../components/ManageItem/newindex";
 
 class ManageItemPage extends Component {
   render() {
     return (
-      <ManageItem></ManageItem>
+      <div className="container d-flex justify-content-center">
+        THIS IS TEST TEXT
+      </div>
     );
   }
 }
 
 export default ManageItemPage;
-
