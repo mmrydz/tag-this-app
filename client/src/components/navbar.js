@@ -66,6 +66,12 @@ class Navbar extends Component {
                 >
                   <span className="text-secondary">logout</span>
                 </Link>
+                <Link
+                  to="/adminhome"
+                  className="btn btn-link text-secondary"
+                >
+                  <span className="text-secondary">admin</span>
+                </Link>
               </section>
             ) : (
               <section className="navbar-section">
