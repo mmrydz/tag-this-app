@@ -5,12 +5,44 @@ import {
   QualityInput,
   FormBtn
 } from "../components/ManageItem/newindex";
+import API from "../utils/API";
 
 class ManageItemPage extends Component {
   state = {
-    barcode: "",
-    name: "",
-    price: "10.00"
+    // items: [],
+    barcode: ""
+    // name: "",
+    // price: "",
+    // category: "",
+    // quality: "",
+    // featured: "",
+    // notes: ""
+  };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    console.log(this.state.barcode);
+    if (this.state.barcode) {
+      API.saveItem({
+        barcode: this.state.barcode
+        // name: this.state.name,
+        // price: this.state.price,
+        // category: this.state.category,
+        // quality: this.state.quality,
+        // featured: this.state.featured,
+        // image: this.state.image,
+        // notes: this.state.notes
+      })
+        .then(res => console.log("it worked!", res))
+        .catch(err => console.log("this is not working ", err));
+    }
   };
 
   render() {
@@ -21,51 +53,60 @@ class ManageItemPage extends Component {
           <form>
             <Input
               type="text"
-              // value={this.state.barcode}
-              // onChange={this.handleInputChange}
+              value={this.state.barcode}
+              onChange={this.handleInputChange}
               name="barcode"
               placeholder="Item Barcode"
             />
             <Input
               type="text"
-              // value={this.state.name}
-              // onChange={this.handleInputChange}
+              value={this.state.name}
+              onChange={this.handleInputChange}
               name="itemName"
               placeholder="Item Name"
             />
-            <div class="input-group">
-              <span class="input-group-addon">$</span>
+            <div className="input-group">
+              <span className="input-group-addon">$</span>
               <input
+                value={this.state.price}
                 type="number"
                 placeholder="Enter price"
                 min="0"
                 step="0.01"
                 data-number-to-fixed="2"
                 data-number-stepfactor="100"
-                class="form-control currency"
+                className="form-control currency"
                 id="price"
-                // onChange={this.handleInputChange}
+              onChange={this.handleInputChange}
               />
             </div>
-            <CategoryInput id="category-input" />
-            <QualityInput id="quality-input" />
+            <CategoryInput id="category-input"
+            value={this.state.category}
+            onChange={this.handleInputChange}
+            />
+            <QualityInput id="quality-input"
+            value={this.state.quality}
+            onChange={this.handleInputChange}
+            />
             <div className="form-group form-check">
               <input
                 type="checkbox"
                 className="form-check-input"
                 id="featured"
+                value={this.state.featured}
+                onChange={this.handleInputChange}
               />
               <label className="form-check-label" htmlFor="featured-input">
                 Featured
               </label>
             </div>
             <div className="form-group">
-              <label for="imagefile">Add an Image</label>
+              <label htmlFor="imagefile">Add an Image</label>
               <input
                 type="file"
                 className="form-control-file"
                 id="imagefile"
-                // onChange={this.handleFileUpload}
+              // onChange={this.handleFileUpload}
               />
             </div>
             <div className="form-group">
@@ -75,9 +116,11 @@ class ManageItemPage extends Component {
                 id="notes-input"
                 rows="3"
                 placeholder="Enter notes"
+                value={this.state.notes}
+                onChange={this.handleInputChange}
               />
             </div>
-            <FormBtn type="button" className="btn btn-primary mr-1">
+            <FormBtn type="submit" className="btn btn-primary mr-1" onClick={this.handleFormSubmit}>
               Save{" "}
             </FormBtn>
             <FormBtn type="button" className="btn btn-primary mr-1">

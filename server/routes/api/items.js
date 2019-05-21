@@ -1,7 +1,7 @@
-const express = require('express')
-const router = express.Router()
+// const express = require('express')
+// const router = express.Router()
 const router = require("express").Router();
-const itemController = require("../database/controllers/itemController");
+const itemController = require("../../database/controllers/itemController");
 
 // Matches with "/items"
 router.route("/")
