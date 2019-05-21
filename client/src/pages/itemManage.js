@@ -33,12 +33,12 @@ class ManageItemPage extends Component {
       API.saveItem({
         barcode: this.state.barcode,
         itemName: this.state.itemName,
-        price: this.state.price
-        // category: this.state.category,
-        // quality: this.state.quality,
+        price: this.state.price,
+        category: this.state.category,
+        quality: this.state.quality,
         // featured: this.state.featured,
         // image: this.state.image,
-        // notes: this.state.notes
+        notes: this.state.notes
       })
         .then(res => console.log("it worked!", res))
         .catch(err => console.log("this is not working ", err));
@@ -81,12 +81,12 @@ class ManageItemPage extends Component {
               />
             </div>
             <CategoryInput
-              id="category-input"
+              name="category"
               value={this.state.category}
               onChange={this.handleInputChange}
             />
             <QualityInput
-              id="quality-input"
+              name="quality"
               value={this.state.quality}
               onChange={this.handleInputChange}
             />
@@ -94,7 +94,7 @@ class ManageItemPage extends Component {
               <input
                 type="checkbox"
                 className="form-check-input"
-                id="featured"
+                name="featured"
                 value={this.state.featured}
                 onChange={this.handleInputChange}
               />
@@ -107,15 +107,15 @@ class ManageItemPage extends Component {
               <input
                 type="file"
                 className="form-control-file"
-                id="imagefile"
-                // onChange={this.handleFileUpload}
+                name="image"
+                onChange={this.handleInputChange}
               />
             </div>
             <div className="form-group">
               <label htmlFor="notes-input">Notes</label>
               <textarea
                 className="form-control"
-                id="notes-input"
+                name="notes "
                 rows="3"
                 placeholder="Enter notes"
                 value={this.state.notes}
