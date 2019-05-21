@@ -16,6 +16,7 @@ const fileType = require('file-type');
 const bluebird = require('bluebird');
 const multiparty = require('multiparty');
 const config = require('dotenv').config();
+const routes = require("./routes");
 // Route requires
 const user = require('./routes/user')
 
@@ -101,6 +102,7 @@ app.use(passport.session()) // calls the deserializeUser
 
 // Routes
 app.use('/user', user)
+app.use(routes);
 
 // Connect to the MongoDB Database ----------------------------
 const MONGODB_URI =
