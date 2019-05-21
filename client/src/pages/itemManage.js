@@ -10,8 +10,8 @@ import API from "../utils/API";
 class ManageItemPage extends Component {
   state = {
     // items: [],
-    barcode: ""
-    // name: "",
+    barcode: "",
+    itemName: ""
     // price: "",
     // category: "",
     // quality: "",
@@ -31,8 +31,8 @@ class ManageItemPage extends Component {
     console.log(this.state.barcode);
     if (this.state.barcode) {
       API.saveItem({
-        barcode: this.state.barcode
-        // name: this.state.name,
+        barcode: this.state.barcode,
+        itemName: this.state.itemName
         // price: this.state.price,
         // category: this.state.category,
         // quality: this.state.quality,
@@ -60,7 +60,7 @@ class ManageItemPage extends Component {
             />
             <Input
               type="text"
-              value={this.state.name}
+              value={this.state.itemName}
               onChange={this.handleInputChange}
               name="itemName"
               placeholder="Item Name"
@@ -77,16 +77,18 @@ class ManageItemPage extends Component {
                 data-number-stepfactor="100"
                 className="form-control currency"
                 id="price"
-              onChange={this.handleInputChange}
+                onChange={this.handleInputChange}
               />
             </div>
-            <CategoryInput id="category-input"
-            value={this.state.category}
-            onChange={this.handleInputChange}
+            <CategoryInput
+              id="category-input"
+              value={this.state.category}
+              onChange={this.handleInputChange}
             />
-            <QualityInput id="quality-input"
-            value={this.state.quality}
-            onChange={this.handleInputChange}
+            <QualityInput
+              id="quality-input"
+              value={this.state.quality}
+              onChange={this.handleInputChange}
             />
             <div className="form-group form-check">
               <input
@@ -106,7 +108,7 @@ class ManageItemPage extends Component {
                 type="file"
                 className="form-control-file"
                 id="imagefile"
-              // onChange={this.handleFileUpload}
+                // onChange={this.handleFileUpload}
               />
             </div>
             <div className="form-group">
@@ -120,7 +122,11 @@ class ManageItemPage extends Component {
                 onChange={this.handleInputChange}
               />
             </div>
-            <FormBtn type="submit" className="btn btn-primary mr-1" onClick={this.handleFormSubmit}>
+            <FormBtn
+              type="submit"
+              className="btn btn-primary mr-1"
+              onClick={this.handleFormSubmit}
+            >
               Save{" "}
             </FormBtn>
             <FormBtn type="button" className="btn btn-primary mr-1">
