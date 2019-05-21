@@ -19,6 +19,7 @@ export default {
   },
   // Saves an item to the database
   saveItem: function(itemData) {
+    console.log(itemData.barcode);
     return axios.post("/api/items", itemData);
   }
 };

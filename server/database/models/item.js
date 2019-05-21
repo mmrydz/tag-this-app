@@ -13,7 +13,7 @@ const itemSchema = new Schema({
   quality: { type: String },
   featured: { type: Boolean },
   likes: { type: Number },
-  notes: { type: String, required: true },
+  notes: { type: String },
   createdAt: {type: Date, default: Date.now},
   updatedAt: {type: Date, default: Date.now}
 });

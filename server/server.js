@@ -16,7 +16,6 @@ const fileType = require('file-type');
 const bluebird = require('bluebird');
 const multiparty = require('multiparty');
 const config = require('dotenv').config();
-console.log(config);
 // Route requires
 const user = require('./routes/user')
 
