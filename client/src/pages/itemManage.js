@@ -11,8 +11,8 @@ class ManageItemPage extends Component {
   state = {
     // items: [],
     barcode: "",
-    itemName: ""
-    // price: "",
+    itemName: "",
+    price: ""
     // category: "",
     // quality: "",
     // featured: "",
@@ -32,8 +32,8 @@ class ManageItemPage extends Component {
     if (this.state.barcode) {
       API.saveItem({
         barcode: this.state.barcode,
-        itemName: this.state.itemName
-        // price: this.state.price,
+        itemName: this.state.itemName,
+        price: this.state.price
         // category: this.state.category,
         // quality: this.state.quality,
         // featured: this.state.featured,
@@ -76,7 +76,7 @@ class ManageItemPage extends Component {
                 data-number-to-fixed="2"
                 data-number-stepfactor="100"
                 className="form-control currency"
-                id="price"
+                name="price"
                 onChange={this.handleInputChange}
               />
             </div>
