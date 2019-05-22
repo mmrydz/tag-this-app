@@ -2,15 +2,16 @@ import React from "react";
 
 export function Input(props) {
   return (
-    <div className="form-group">
+    // <div className="form-group">
       <input className="form-control" {...props} />
-    </div>
+    // </div>
   );
 }
 
 export function CategoryInput(props) {
   return (
     <div className="form-group">
+      <label>Category</label>
       <select className="form-control" {...props}>
         <option>Select Category</option>
         <option value="Baby Furniture">Baby Furniture</option>
@@ -40,6 +41,7 @@ export function CategoryInput(props) {
 export function QualityInput(props) {
   return (
     <div className="form-group">
+      <label>Quality</label>
       <select className="form-control" {...props}>
         <option>Select Quality</option>
         <option>New</option>
