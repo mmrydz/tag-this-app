@@ -6,17 +6,20 @@ import {
   FormBtn
 } from "../components/ManageItem/newindex";
 import API from "../utils/API";
+import Alert from "../components/Alert/index";
+//import Alert from 'react-bootstrap/Alert';
 
 class ManageItemPage extends Component {
   state = {
     // items: [],
     barcode: "",
-    itemName: ""
+    itemName: "",
     // price: "",
     // category: "",
     // quality: "",
     // featured: "",
     // notes: ""
+    submitted: false
   };
 
   handleInputChange = event => {
@@ -32,7 +35,7 @@ class ManageItemPage extends Component {
     if (this.state.barcode) {
       API.saveItem({
         barcode: this.state.barcode,
-        itemName: this.state.itemName
+        itemName: this.state.itemName,
         // price: this.state.price,
         // category: this.state.category,
         // quality: this.state.quality,
@@ -40,15 +43,23 @@ class ManageItemPage extends Component {
         // image: this.state.image,
         // notes: this.state.notes
       })
-        .then(res => console.log("it worked!", res))
+        .then(res => this.successAlert())
         .catch(err => console.log("this is not working ", err));
     }
   };
 
+
+  successAlert = () => {
+    this.setState({ submitted: true })
+    console.log(this.state.submitted);
+
+  }
+
   render() {
     return (
-      <div className="container">
-        <h3>THIS IS TEST TEXT!</h3>
+      <div className="container"> 
+        { this.state.submitted ? <Alert /> : null }
+        <h3>Manage Items</h3>
         <div className="justify-content-center">
           <form>
             <Input
@@ -56,7 +67,9 @@ class ManageItemPage extends Component {
               value={this.state.barcode}
               onChange={this.handleInputChange}
               name="barcode"
-              placeholder="Item Barcode"
+              placeholder="Item Barcode (required)"
+              autoFocus
+              required
             />
             <Input
               type="text"
@@ -108,7 +121,7 @@ class ManageItemPage extends Component {
                 type="file"
                 className="form-control-file"
                 id="imagefile"
-                // onChange={this.handleFileUpload}
+              // onChange={this.handleFileUpload}
               />
             </div>
             <div className="form-group">
@@ -126,6 +139,7 @@ class ManageItemPage extends Component {
               type="submit"
               className="btn btn-primary mr-1"
               onClick={this.handleFormSubmit}
+              disabled={!(this.state.barcode)}
             >
               Save{" "}
             </FormBtn>
@@ -143,3 +157,4 @@ class ManageItemPage extends Component {
 }
 
 export default ManageItemPage;
+
