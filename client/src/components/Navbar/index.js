@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 // import { Redirect } from 'react-router-dom'
 import { Route, Link } from "react-router-dom";
-//import logo from '../logo.svg';
-//import '../Navbar/App.css';
 import axios from "axios";
 
 class Navbar extends Component {
@@ -38,9 +36,9 @@ class Navbar extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a className="navbar-brand" href="#">
-            Navbar
-          </a>
+          <Link className="navbar-brand" to="/">
+            <img src="../logo1.png" height="100" />
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -61,7 +59,11 @@ class Navbar extends Component {
                 <Link className="nav-item nav-link" to="#">
                   Admin
                 </Link>
-                <Link className="nav-item nav-link" to="#">
+                <Link
+                  className="nav-item nav-link"
+                  to="#"
+                  onClick={this.logout}
+                >
                   Logout
                 </Link>
               </div>
@@ -70,7 +72,7 @@ class Navbar extends Component {
                 <Link className="nav-item nav-link" to="/login">
                   Login
                 </Link>
-                <Link className="nav-item nav-link" to="#">
+                <Link className="nav-item nav-link" to="/signup">
                   Sign Up
                 </Link>
               </div>
@@ -78,7 +80,6 @@ class Navbar extends Component {
           </div>
         </nav>
       </div>
-
       //   <div>
       //     <header className="navbar App-header" id="nav-container">
       //       <div className="col-4">
