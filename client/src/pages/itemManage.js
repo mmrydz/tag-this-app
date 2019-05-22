@@ -11,13 +11,13 @@ import axios from "axios";
 
 class ManageItemPage extends Component {
   state = {
-    // items: [],
+    items: [],
     barcode: "",
     itemName: "",
     price: "",
     category: "",
     quality: "",
-    // featured: "",
+    featured: false,
     notes: "",
     submitted: false,
     file: null,
@@ -74,8 +74,8 @@ class ManageItemPage extends Component {
         price: this.state.price,
         category: this.state.category,
         quality: this.state.quality,
-        // featured: this.state.featured,
-        image: `https://s3.amazonaws.com/tag-this-app-adoelp/bucketFolder/${fixFileName}.png`,
+        featured: this.state.featured,
+        image: `https://s3.amazonaws.com/tag-this-app-adoelp/bucketFolder/${fixFileName}`,
         notes: this.state.notes
       })
         .then(res => this.successAlert())
