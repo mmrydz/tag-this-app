@@ -76,7 +76,7 @@ class ManageItemPage extends Component {
         category: this.state.category,
         quality: this.state.quality,
         featured: this.state.featured,
-        image: `https://s3.amazonaws.com/tag-this-app-adoelp/bucketFolder/${fixFileName}`,
+        // image: `https://s3.amazonaws.com/tag-this-app-adoelp/bucketFolder/${fixFileName}`,
         notes: this.state.notes
       })
         .then(res => this.successAlert())
@@ -181,16 +181,16 @@ class ManageItemPage extends Component {
             <FormBtn
               type="button"
               className="btn btn-primary mr-1"
-              onClick={this.submitFile}
-              disabled={!(this.state.barcode && this.state.fileUrl)}
+              onClick={this.handleFormSubmit}
+              disabled={!(this.state.barcode)}
             >
               Save{" "}
             </FormBtn>
             <FormBtn 
             type="submit"
             className="btn btn-primary mr-1"
-            onClick={this.submitFile}
-            disabled={!(this.state.barcode && this.state.fileUrl)}
+            onClick={this.handleFormSubmit}
+            disabled={!(this.state.barcode)}
             >
               Save and Create New{" "}
             </FormBtn>

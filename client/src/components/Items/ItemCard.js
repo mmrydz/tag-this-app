@@ -19,10 +19,10 @@ class ItemCard extends Component {
           <h4 className="card-title">{this.props.item.name}</h4>
           <p className="card-text">{this.props.item.description}</p>
           <button className="card-button">Get More Info</button>
-          <div className="favorite">
+          {/* <div className="favorite">
             <input type="checkbox" onChange={this.props.saveFavorite}
-            />  Save To Favorites
-          </div> 
+            />  Save To Favorites */}
+          {/* </div>  */}
         </div>
         <br></br>
       </div>
