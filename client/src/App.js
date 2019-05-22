@@ -47,7 +47,7 @@ import Signup from "./components/sign-up";
 import LoginForm from "./components/login-form";
 import Navbar from "./components/Navbar/index";
 //import Home from './components/home'
-import Items from "./components/Items";
+import Items from "./components/Items/index";
 import Event from "./components/EventContainer";
 
 class App extends Component {
