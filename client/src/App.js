@@ -48,6 +48,7 @@ import LoginForm from "./components/login-form";
 import Navbar from "./components/Navbar/index";
 //import Home from './components/home'
 import Items from "./components/Items";
+import Event from "./components/EventContainer";
 
 class App extends Component {
   constructor() {
@@ -165,11 +166,14 @@ class App extends Component {
               exact
               path="/"
               render={() => (
+                <div className="homecontainer">
+                <Event/>
                 <Items
                   items={this.state.items}
                   saveFavorite={this.saveFavorite}
                   isFeatured={this.isFeatured}
                 />
+                </div>
               )}
             />
             <Route

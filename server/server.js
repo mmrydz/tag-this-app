@@ -18,6 +18,9 @@ const multiparty = require('multiparty');
 const config = require('dotenv').config();
 const routes = require("./routes");
 console.log(config);
+const serveStatic = require('serve-static')
+var path = require('path')
+
 // Route requires
 const user = require('./routes/user')
 
@@ -49,6 +52,8 @@ const uploadFile = (buffer, name, type) => {
 
 // Define Middleware Here -------------------------------------
 app.use(morgan('dev'))
+app.use("/public", express.static(path.join(__dirname, 'public')));
+
 //app.use(express.urlencoded({ extended: true }));
 app.use(
 	bodyParser.urlencoded({
