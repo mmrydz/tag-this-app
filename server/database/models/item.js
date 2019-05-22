@@ -5,7 +5,7 @@ mongoose.promise = Promise;
 // Define itemSchema
 
 const itemSchema = new Schema({
-  barcode: { type: String, required: true },
+  barcode: { type: String, required: true, unique: true },
   image: { type: String },
   itemName: { type: String },
   price: { type: Number },
