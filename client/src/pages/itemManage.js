@@ -92,41 +92,54 @@ class ManageItemPage extends Component {
 
   render() {
     return (
-      <div className="container"> 
-        { this.state.submitted ? <Alert /> : null }
-        <h3>Manage Items</h3>
+      <div className="container">
+        {this.state.submitted ? <Alert /> : null}
+        <h3 className="text-center">Manage Items</h3>
         <div className="justify-content-center">
           <form>
-            <Input
-              type="text"
-              value={this.state.barcode}
-              onChange={this.handleInputChange}
-              name="barcode"
-              placeholder="Item Barcode (required)"
-              autoFocus
-              required
-            />
-            <Input
-              type="text"
-              value={this.state.itemName}
-              onChange={this.handleInputChange}
-              name="itemName"
-              placeholder="Item Name"
-            />
-            <div className="input-group">
-              <span className="input-group-addon">$</span>
-              <input
-                value={this.state.price}
-                type="number"
-                placeholder="Enter price"
-                min="0"
-                step="0.01"
-                data-number-to-fixed="2"
-                data-number-stepfactor="100"
-                className="form-control currency"
-                name="price"
+            <div className="form-group">
+              <label htmlFor="barcode">Barcode</label>
+              <Input
+                type="text"
+                value={this.state.barcode}
                 onChange={this.handleInputChange}
+                name="barcode"
+                placeholder="Item Barcode (required)"
+                autoFocus
+                required
               />
+              <small className={this.state.barcode ? "" : "red"}>Use the barcode scanner to add the barcode number</small>
+            </div>
+            <div className="form-group">
+              <label htmlFor="itemName">Name</label>
+              <Input
+                type="text"
+                value={this.state.itemName}
+                onChange={this.handleInputChange}
+                name="itemName"
+                placeholder="Item Name"
+              />
+              <small>Be as descriptive as possible!</small>
+            </div>
+            <div className="form-group">
+              <label htmlFor="price">Price</label>
+              <div className="input-group mb-2">
+                <div className="input-group-prepend">
+                  <div className="input-group-text">$</div>
+                </div>
+                <input
+                  value={this.state.price}
+                  type="number"
+                  placeholder="Enter price"
+                  min="0"
+                  step="0.01"
+                  data-number-to-fixed="2"
+                  data-number-stepfactor="100"
+                  className="form-control currency"
+                  name="price"
+                  onChange={this.handleInputChange}
+                />
+              </div>
             </div>
             <CategoryInput
               name="category"
@@ -151,20 +164,20 @@ class ManageItemPage extends Component {
               </label>
             </div>
             <div className="form-group">
-              <label htmlFor="imagefile">Add an Image</label>
+              <label htmlFor="imagefile">Image</label>
               <input
                 type="file"
                 className="form-control-file"
                 name="image"
                 onChange={this.handleFileUpload}
               />
-              <img src={this.state.fileUrl} alt="uploaded stuff" />
+              <img src={this.state.fileUrl} style={{width: "25%"}}/>
             </div>
             <div className="form-group">
               <label htmlFor="notes-input">Notes</label>
               <textarea
                 className="form-control"
-                name="notes "
+                name="notes"
                 rows="3"
                 placeholder="Enter notes"
                 value={this.state.notes}
@@ -175,16 +188,21 @@ class ManageItemPage extends Component {
               type="button"
               className="btn btn-primary mr-1"
               onClick={this.submitFile}
-              disabled={!(this.state.barcode)}
+              disabled={!(this.state.barcode && this.state.fileUrl)}
             >
               Save{" "}
             </FormBtn>
-            <FormBtn type="button" className="btn btn-primary mr-1">
-              upload image{" "}
+            <FormBtn 
+            type="submit"
+            className="btn btn-primary mr-1"
+            onClick={this.submitFile}
+            disabled={!(this.state.barcode && this.state.fileUrl)}
+            >
+              Save and Create New{" "}
             </FormBtn>
-            <FormBtn type="button" className="btn btn-primary mt-1">
+            {/* <FormBtn type="button" className="btn btn-primary mt-1">
               Save and Update{" "}
-            </FormBtn>
+            </FormBtn> */}
           </form>
         </div>
       </div>
