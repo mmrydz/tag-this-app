@@ -1,0 +1,64 @@
+
+/* Item Card Formatting */
+.card {
+  width: 400px;
+  border: 10px ridge #00DF38;
+  text-align: center;
+}
+
+.card-button {
+  background: #0575E6;
+  width: 30%;
+  margin: auto;
+  text-align: center;
+  color: #00DF38;
+}
+
+/* Items Page Display Formatting */
+
+/* // Feature Items Display Area CSS */
+.feature-div {
+  
+  background-image: linear-gradient(to right, #021B79, #0575E6, #045de9, #0575E6, #021B79);
+}
+
+.feature-display {
+  margin: auto;
+  width: 33%;
+  padding: 10px;
+  
+} 
+
+.feature-text {
+  text-align: center;
+  letter-spacing: 9px;
+  color: #00DF38;
+  text-shadow: 2px 2px 4px #000000;
+  border: 6px ridge #00DF38;
+  background-image: linear-gradient(to right, #021B79, #0575E6, #045de9, #0575E6, #021B79)
+}
+/* //////////////////////////////////////////////////////////
+
+// All Items Display Area CSS
+
+///////////////////////////////////////////////////////// */
+.allItems-section {
+  background-image: linear-gradient(to right, #021B79, #0575E6, #045de9, #0575E6, #021B79);
+
+}
+
+ .items-display {
+  margin: auto;
+  width: 33%;
+  padding: 5px;
+  
+} 
+
+.allItems-text {
+  text-align: center;
+  letter-spacing: 9px;
+  color: #00DF38;
+  text-shadow: 2px 2px 4px #000000;
+  border: 10px ridge #00DF38;
+  background-image: linear-gradient(to right, #021B79, #0575E6, #045de9, #0575E6, #021B79);
+}
