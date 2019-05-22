@@ -11,6 +11,7 @@ export default {
   },
   // Gets the item with the given barcode
   getItem: function(barcode) {
+    console.log(barcode);
     return axios.get("/api/items/" + barcode);
   },
   // Deletes the item with the given barcode
@@ -19,7 +20,6 @@ export default {
   },
   // Saves an item to the database
   saveItem: function(itemData) {
-    console.log(itemData.barcode);
     return axios.post("/api/items", itemData);
   }
 };
