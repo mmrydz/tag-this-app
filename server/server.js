@@ -17,6 +17,7 @@ const bluebird = require('bluebird');
 const multiparty = require('multiparty');
 const config = require('dotenv').config();
 const routes = require("./routes");
+console.log(config);
 // Route requires
 const user = require('./routes/user')
 
@@ -69,15 +70,17 @@ if (process.env.NODE_ENV === "production") {
 app.post('/test-upload', (request, response) => {
   const form = new multiparty.Form();
     form.parse(request, async (error, fields, files) => {
+      //console.log(request);
       if (error) throw new Error(error);
       try {
         const path = files.file[0].path;
         const buffer = fs.readFileSync(path);
         const type = fileType(buffer);
         const timestamp = Date.now().toString();
-        const fileName = `bucketFolder/${timestamp}-lg`;
-        const data = await uploadFile(buffer, fileName, type);
-        //console.log();
+        const ogFileName = files.file[0].originalFilename.trim();
+        const fileName = `bucketFolder/${ogFileName}`;
+        const data = uploadFile(buffer, fileName, type);
+        //console.log(data);
         return response.status(200).send(data);
       } catch (error) {
         return response.status(400).send(error);

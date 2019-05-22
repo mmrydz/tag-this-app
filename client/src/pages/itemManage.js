@@ -7,7 +7,7 @@ import {
 } from "../components/ManageItem/newindex";
 import API from "../utils/API";
 import Alert from "../components/Alert/index";
-//import Alert from 'react-bootstrap/Alert';
+import axios from "axios";
 
 class ManageItemPage extends Component {
   state = {
@@ -15,12 +15,24 @@ class ManageItemPage extends Component {
     barcode: "",
     itemName: "",
     price: "",
-    // category: "",
-    // quality: "",
+    category: "",
+    quality: "",
     // featured: "",
-    // notes: ""
-    submitted: false
+    notes: "",
+    submitted: false,
+    file: null,
+    fileUrl: "",
+    filename: ""
   };
+
+  handleFileUpload = e => {
+    const file = e.target.files[0]
+    this.setState({
+      fileUrl: URL.createObjectURL(file),
+      file: e.target.files,
+      filename: file.name
+    })
+  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -29,9 +41,32 @@ class ManageItemPage extends Component {
     });
   };
 
+  submitFile = event => {
+    event.persist();
+    const formData = new FormData();
+    formData.append("file", this.state.file[0]);
+    axios
+      .post(`/test-upload`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+      .then(response => {
+        // handle your response;
+        console.log("it worked!", response);
+        this.handleFormSubmit(event);
+      })
+      .catch(error => {
+        // handle your error
+        console.log("it did not work", error);
+      });
+  };
+
   handleFormSubmit = event => {
     event.preventDefault();
     console.log(this.state.barcode);
+    let fixFileName = this.state.filename.split(' ').join('+');
+    console.log(fixFileName);
     if (this.state.barcode) {
       API.saveItem({
         barcode: this.state.barcode,
@@ -40,7 +75,7 @@ class ManageItemPage extends Component {
         category: this.state.category,
         quality: this.state.quality,
         // featured: this.state.featured,
-        // image: this.state.image,
+        image: `https://s3.amazonaws.com/tag-this-app-adoelp/bucketFolder/${fixFileName}.png`,
         notes: this.state.notes
       })
         .then(res => this.successAlert())
@@ -121,8 +156,9 @@ class ManageItemPage extends Component {
                 type="file"
                 className="form-control-file"
                 name="image"
-                onChange={this.handleInputChange}
+                onChange={this.handleFileUpload}
               />
+              <img src={this.state.fileUrl} alt="uploaded stuff" />
             </div>
             <div className="form-group">
               <label htmlFor="notes-input">Notes</label>
@@ -136,15 +172,15 @@ class ManageItemPage extends Component {
               />
             </div>
             <FormBtn
-              type="submit"
+              type="button"
               className="btn btn-primary mr-1"
-              onClick={this.handleFormSubmit}
+              onClick={this.submitFile}
               disabled={!(this.state.barcode)}
             >
               Save{" "}
             </FormBtn>
             <FormBtn type="button" className="btn btn-primary mr-1">
-              Save and Create New{" "}
+              upload image{" "}
             </FormBtn>
             <FormBtn type="button" className="btn btn-primary mt-1">
               Save and Update{" "}
