@@ -3,6 +3,7 @@ import {
   Input,
   CategoryInput,
   QualityInput,
+  FeaturedInput,
   FormBtn
 } from "../components/ManageItem/newindex";
 import API from "../utils/API";
@@ -17,7 +18,7 @@ class ManageItemPage extends Component {
     price: "",
     category: "",
     quality: "",
-    featured: false,
+    featured:"",
     notes: "",
     submitted: false,
     file: null,
@@ -151,18 +152,11 @@ class ManageItemPage extends Component {
               value={this.state.quality}
               onChange={this.handleInputChange}
             />
-            <div className="form-group form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                name="featured"
-                value={this.state.featured}
-                onChange={this.handleInputChange}
-              />
-              <label className="form-check-label" htmlFor="featured-input">
-                Featured
-              </label>
-            </div>
+            <FeaturedInput
+              name="featured"
+              value={this.state.featured}
+              onChange={this.handleInputChange}
+            />
             <div className="form-group">
               <label htmlFor="imagefile">Image</label>
               <input

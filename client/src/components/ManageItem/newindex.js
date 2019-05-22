@@ -53,6 +53,17 @@ export function QualityInput(props) {
   );
 }
 
+export function FeaturedInput(props) {
+  return (
+    <div className="form-group">
+      <label>Featured?</label>
+      <select className="form-control" {...props}>
+        <option>False</option>
+        <option>True</option>
+     </select>
+      </div>);
+}
+
 export function FormBtn(props) {
   return <button {...props}>{props.children}</button>;
 }
