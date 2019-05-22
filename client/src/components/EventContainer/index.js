@@ -31,10 +31,10 @@ class Event extends Component {
                     <img alt="Calendar" src="/calendar.png"/>
                     </a>
                     </div>
-            <div className="timer">
+            {/* <div className="timer">
                 <h4>Countdown to the Event: 
                 <h4 id="timer"></h4></h4>
-            </div>
+            </div> */}
         </div>
         
         );

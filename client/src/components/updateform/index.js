@@ -3,7 +3,7 @@ import "./style.css";
 
 class UpdateItem extends Component {
 
-    // createNew = () => window.location.href="/adminhome";
+    createNew = () => window.location.href="/adminhome";
     goToUpdateItem = () => window.location.href = "/manage";
 
   render() {
