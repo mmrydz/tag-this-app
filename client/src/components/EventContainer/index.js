@@ -10,7 +10,7 @@ class Event extends Component {
         return (
             <div className="jumbotron">
                 <img alt="scouts" id="scouts" src="/boyscouts.png" />
-                <h3 className="display-4">Darien Boy Scouts Annual Tag Sale</h3>
+                <h2>Darien Boy Scouts Annual Tag Sale</h2>
                 <p className="lead">
                 Saturday, May 9, 2020<br/>
                 8:30am to 4:00pm<br/>
@@ -32,6 +32,5 @@ class Event extends Component {
         );
     }
 }
-
 
 export default Event;

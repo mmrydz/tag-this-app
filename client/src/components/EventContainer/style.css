@@ -1,28 +1,3 @@
-
-.event-info {
-    display: flex;
-    text-align: center;
+.jumbotron {
     align-content: center;
 }
-
-#scouts {
-    height: 100px;
-    padding-right: 20px;
-}
-
-.buttons {
-    text-align: center;
-}
-
-#map {
-    padding-right: 20px;
-    height: 20px;
-}
-#calendar {
-    height: 20px;
-}
-
-.timer {
-    text-align: center;
-}
-
