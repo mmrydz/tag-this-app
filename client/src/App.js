@@ -167,12 +167,12 @@ class App extends Component {
               path="/"
               render={() => (
                 <div className="homecontainer">
-                <Event/>
-                <Items
-                  items={this.state.items}
-                  saveFavorite={this.saveFavorite}
-                  isFeatured={this.isFeatured}
-                />
+                  <Event />
+                  <Items
+                    items={this.state.items}
+                    saveFavorite={this.saveFavorite}
+                    isFeatured={this.isFeatured}
+                  />
                 </div>
               )}
             />
