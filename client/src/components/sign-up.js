@@ -48,56 +48,90 @@ class Signup extends Component {
 
   render() {
     return (
-      <div className="SignupForm">
-        <h4>Sign up</h4>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <div className="col-1 col-ml-auto">
-              <label className="form-label" htmlFor="username">
-                Username
-              </label>
-            </div>
-            <div className="col-3 col-mr-auto">
-              <input
-                className="form-input"
-                type="text"
-                id="username"
-                name="username"
-                placeholder="Username"
-                value={this.state.username}
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-          <div className="form-group">
-            <div className="col-1 col-ml-auto">
-              <label className="form-label" htmlFor="password">
-                Password:{" "}
-              </label>
-            </div>
-            <div className="col-3 col-mr-auto">
-              <input
-                className="form-input"
-                placeholder="password"
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-          <div className="form-group ">
-            <div className="col-7" />
-            <button
-              className="btn btn-primary col-1 col-mr-auto"
-              onClick={this.handleSubmit}
-              type="submit"
-            >
-              Sign up
-            </button>
-          </div>
-        </form>
+      <div className="SignupForm container">
+        <h4 className="my-3">Sign Up</h4>
+        <div className="form-group">
+          <label className="mb-0" for="username">
+            Username
+          </label>
+          <input
+            type="text"
+            className="form-control mb-3"
+            name="username"
+            placeholder="Enter Username"
+            value={this.state.username}
+            onChange={this.handleChange}
+          />
+          <label className="mb-0" for="username">
+            Password
+          </label>
+          <input
+            type="password"
+            className="form-control mb-3"
+            name="password"
+            placeholder="Enter Password"
+            value={this.state.password}
+            onChange={this.handleChange}
+          />
+          <button
+            type="submit"
+            class="btn btn-primary"
+            onClick={this.handleSubmit}
+          >
+            Sign Up
+          </button>
+        </div>
       </div>
+      // <div className="SignupForm">
+      //   <h4>Sign up</h4>
+      //   <form className="form-horizontal">
+      //     <div className="form-group">
+      //       <div className="col-1 col-ml-auto">
+      //         <label className="form-label" htmlFor="username">
+      //           Username
+      //         </label>
+      //       </div>
+      //       <div className="col-3 col-mr-auto">
+      //         <input
+      //           className="form-input"
+      //           type="text"
+      //           id="username"
+      //           name="username"
+      //           placeholder="Username"
+      //           value={this.state.username}
+      //           onChange={this.handleChange}
+      //         />
+      //       </div>
+      //     </div>
+      //     <div className="form-group">
+      //       <div className="col-1 col-ml-auto">
+      //         <label className="form-label" htmlFor="password">
+      //           Password:{" "}
+      //         </label>
+      //       </div>
+      //       <div className="col-3 col-mr-auto">
+      //         <input
+      //           className="form-input"
+      //           placeholder="password"
+      //           type="password"
+      //           name="password"
+      //           value={this.state.password}
+      //           onChange={this.handleChange}
+      //         />
+      //       </div>
+      //     </div>
+      //     <div className="form-group ">
+      //       <div className="col-7" />
+      //       <button
+      //         className="btn btn-primary col-1 col-mr-auto"
+      //         onClick={this.handleSubmit}
+      //         type="submit"
+      //       >
+      //         Sign up
+      //       </button>
+      //     </div>
+      //   </form>
+      // </div>
     );
   }
 }
