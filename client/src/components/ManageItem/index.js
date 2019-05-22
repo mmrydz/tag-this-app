@@ -11,7 +11,7 @@ class ManageItem extends Component {
           price: "",
           category: "",
           quality: "",
-          featured: false,
+          featured: "",
           image: "",
           notes: ""
         };
@@ -171,21 +171,14 @@ class ManageItem extends Component {
                   <option>Poor</option>
                 </select>
               </div>
-              <div className="form-group form-check">
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  id="featured-input"
-                />
-                <label className="form-check-label" htmlFor="featured-input">
-                  Featured
-                </label>
-                <small id="featuredHelp" className="form-text text-muted">
-                  Choose whether this item should be displayed as a featured
-                  item
-                </small>
-              </div>
               <div className="form-group">
+                <label htmlFor="featured-input">Featured</label>
+                <select className="form-control" id="featured-input">
+                  <option>False</option>
+                  <option>True</option>
+                </select>
+              </div>
+                <div className="form-group">
                 <label htmlFor="image-input">Add an image</label>
                 <input
                   type="file"

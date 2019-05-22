@@ -11,7 +11,7 @@ const itemSchema = new Schema({
   price: { type: Number },
   category: { type: String },
   quality: { type: String },
-  featured: { type: Boolean, default: false },
+  featured: { type: Boolean },
   likes: { type: Number },
   notes: { type: String },
   createdAt: { type: Date, default: Date.now },
