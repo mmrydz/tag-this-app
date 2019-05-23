@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./style.css";
 import API from "../../utils/API";
 
-class UpdateItem extends Component {
+class UpdateForm extends Component {
   // createNew = () => window.location.href="/adminhome";
   // goToUpdateItem = () => window.location.href = "/manage";
   state = {
@@ -75,4 +75,4 @@ class UpdateItem extends Component {
   }
 }
 
-export default UpdateItem;
+export default UpdateForm;
