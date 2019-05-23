@@ -6,7 +6,6 @@ const itemController = require("../../database/controllers/itemController");
 // Matches with "/items"
 router.route("/")
   .get(itemController.findAll)
-  .get(itemController.findByFeatured)
   .post(itemController.create);
 
 // Matches with "/items/:id"
@@ -15,7 +14,12 @@ router.route("/:id")
   .put(itemController.update)
   .delete(itemController.remove);
 
-router.route("/:category")
+// Matches with "/items/featured/true"
+router.route("/featured/:true")
+  .get(itemController.findByFeatured)
+
+// Matches with "/items/category/:category"
+router.route("/category/:category")
   .get(itemController.findByCategory);
 
 module.exports = router;

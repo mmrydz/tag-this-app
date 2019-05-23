@@ -1,14 +1,24 @@
 import React, { Component } from "react";
 import "./style.css";
 
-function ItemsByCategory(props) {
+class Categories extends Component {
+
+handleInputChange = event => {
+  const { name, value } = event.target;
+  this.setState({
+    [name]: value
+  });
+};
+
+render() {
+
   return (
     <div className="container">
     <div className="row">
       <div className="col-sm-12">
     <div className="form-group">
     <label htmlFor="category-input"></label>
-    <select className="form-control" id="category-input">
+    <select className="form-control" className="selectdropdown" id="category-input">
       <option>Search by Category</option>
       <option value="Baby Furniture">Baby Furniture</option>
       <option value="Bikes">Bikes</option>
@@ -34,7 +44,8 @@ function ItemsByCategory(props) {
   </div>
   </div>
   </div>
-  )
-}
 
-export default ItemsByCategory;
+  )
+  }
+}
+export default Categories;
