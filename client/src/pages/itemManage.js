@@ -4,8 +4,7 @@ import {
   CategoryInput,
   QualityInput,
   FeaturedInput,
-  FormBtn,
-  DeleteBtn
+  FormBtn
 } from "../components/ManageItem/newindex";
 import API from "../utils/API";
 import Alert from "../components/Alert/index";
