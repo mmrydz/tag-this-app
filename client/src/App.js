@@ -13,6 +13,8 @@ import Navbar from "./components/Navbar/index";
 import Items from "./pages/Items";
 import Event from "./components/EventContainer";
 import ItemsByCategory from "./components/ItemsByCategory/index"
+import ItemsByFeatured from "./components/ItemsByFeatured/index"
+
 
 class App extends Component {
   constructor() {
@@ -88,6 +90,7 @@ class App extends Component {
                 <div className="homecontainer">
                   <Event />
                   <ItemsByCategory />
+                  <ItemsByFeatured />
                 </div>
               )}
             />
