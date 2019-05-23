@@ -4,7 +4,8 @@ import {
   CategoryInput,
   QualityInput,
   FeaturedInput,
-  FormBtn
+  FormBtn,
+  DeleteBtn
 } from "../components/ManageItem/newindex";
 import API from "../utils/API";
 import Alert from "../components/Alert/index";
@@ -197,6 +198,14 @@ class ManageItemPage extends Component {
             {/* <FormBtn type="button" className="btn btn-primary mt-1">
               Save and Update{" "}
             </FormBtn> */}
+            <FormBtn 
+            type="submit"
+            className="btn btn-danger mr-1"
+            onClick={this.handleFormSubmit}
+            disabled={!(this.state.barcode)}
+            >
+              Delete{" "}
+            </FormBtn>
           </form>
         </div>
       </div>
