@@ -160,6 +160,20 @@ class ManageItemPage extends Component {
 
   }
 
+  handleDelete = event => {
+    var url = window.location.search;
+    if (url.indexOf("?post_id=") !== -1) {
+      this.state.postId = url.split("=")[1];
+      console.log(this.state.postId);
+      this.deleteItem(this.state.postId);
+    }      
+  }
+
+  deleteItem = id => {
+    API.deleteItem(id)
+      .then(res => console.log("we deleted it!", res))
+      .catch(err => console.log(err));
+  };
 
   successAlert = () => {
     this.setState({ submitted: true })
@@ -275,9 +289,9 @@ class ManageItemPage extends Component {
               Save and Update{" "}
             </FormBtn> */}
             <FormBtn 
-            type="submit"
+            type="button"
             className="btn btn-danger mr-1"
-            onClick={this.handleFormSubmit}
+            onClick={this.handleDelete}
             disabled={!(this.state.barcode)}
             >
               Delete{" "}
