@@ -9,13 +9,13 @@ class Event extends Component {
 
         return (
             <div className="jumbotron">
-                <img alt="scouts" id="scouts" src="/boyscouts.png" />
+                <p><img alt="scouts" id="scouts" src="/boyscouts.png" />
                 <h2>Darien Boy Scouts Annual Tag Sale</h2>
                 <p className="lead">
                 Saturday, May 9, 2020<br/>
                 8:30am to 4:00pm<br/>
                 140 West Ave, Darien, CT 06820
-                </p>
+                </p></p>
                 <hr className="my-4"/>
                 <p className="lead">
                     <a className="btn btn-primary btn-lg" href="https://www.google.com/maps/place/140+West+Ave,+Darien,+CT+06820/@41.075633,-73.4834604,142m/data=!3m1!1e3!4m5!3m4!1s0x89c2a061f481c189:0x5d2567d6e83411ad!8m2!3d41.0755924!4d-73.4832516" role="button">View on Map</a>
