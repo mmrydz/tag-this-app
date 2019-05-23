@@ -13,9 +13,12 @@ import Navbar from "./components/Navbar/index";
 //import Home from './components/home'
 import Items from "./pages/Items";
 import Event from "./components/EventContainer";
-import Categories from "./components/Categories/index";
-import ItemCard from "./components/ItemCard/ItemCard";
-import API from "../src/utils/API";
+
+// import ItemsByCategory from "./components/ItemsByCategory/index";
+// import ItemsByFeatured from "./components/ItemsByFeatured/index";
+// import Categories from "./components/Categories/index";
+// import ItemCard from "../src/components/ItemCard";
+// import API from "../src/utils/API";
 
 
 class App extends Component {
@@ -31,8 +34,11 @@ class App extends Component {
     this.getUser = this.getUser.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.updateUser = this.updateUser.bind(this);
-//    this.getItems = this.getItems.bind(this);
-//    this.updateItems = this.updateItems.bind(this);
+
+    this.saveFavorite = this.saveFavorite.bind(this);
+    //    this.getItems = this.getItems.bind(this);
+    //    this.updateItems = this.updateItems.bind(this);
+
   }
 
   componentDidMount() {
@@ -83,8 +89,12 @@ class App extends Component {
               render={() => (
                 <div className="homecontainer">
                   <Event />
+
+                  {/* <ItemsByCategory />
+                  <ItemsByFeatured /> */}
                   <Categories />
                   <ItemCard />
+
                 </div>
               )}
             />

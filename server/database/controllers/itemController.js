@@ -11,7 +11,7 @@ module.exports = {
     console.log(req.params.id);
     db.Item.findById(req.params.id)
       .then(dbItem => {
-        res.json(dbItem)
+        res.json(dbItem);
       })
       .catch(err => res.status(422).json(err));
   },
@@ -21,21 +21,23 @@ module.exports = {
       where: {
         featured: req.params.featured
       }
-    })
-      .then(function(dbItem) {
-        res.json(dbItem);
-      });
+
+    }).then(function(dbItem) {
+      res.json(dbItem);
+    });
   },
-   
+
+
   findByCategory: function(req, res) {
     db.Item.findAll({
       where: {
         category: req.params.category
       }
-    })
-      .then(function(dbItem) {
-        res.json(dbItem);
-      });
+
+    }).then(function(dbItem) {
+      res.json(dbItem);
+    });
+
   },
 
   create: function(req, res) {
