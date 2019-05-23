@@ -10,12 +10,23 @@ class UpdateItem extends Component {
         barcode: ""
     };
 
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+          [name]: value
+        });
+      };
+
     goToUpdateItem = event => {
-        event.preventDefault();
+        // event.preventDefault();
         console.log(this.state.barcode);
-        // API.getItem(this.props.match.body.id)
-        // .then(res => this.setState({ item: res.data }))
-        // .catch(err => console.log(err));
+        API.getItem(this.state.barcode)
+        .then(res => {
+            this.setState({ item: res.data });
+            console.log(this.state.item._id);
+            window.location.href= "/manage?post_id=" + this.state.item._id;
+        })
+        .catch(err => console.log(err));
     }
 
     render() {
@@ -31,7 +42,7 @@ class UpdateItem extends Component {
                             <div className="form-group">
                                 <label htmlFor="barcode-input">Barcode</label>
                                 <input type="text" className="form-control" id="barcode-input" aria-describedby="barcodeHelp"
-                                    placeholder="Enter barcode" autoFocus></input>
+                                    placeholder="Enter barcode" name="barcode" value={this.state.barcode} onChange={this.handleInputChange} autoFocus></input>
                                 <small id="barcodeHelp" className="form-text text-muted">Use the barcode scanner to add the barcode
                             number</small>
                             </div>
