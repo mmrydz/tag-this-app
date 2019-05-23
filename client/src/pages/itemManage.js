@@ -18,13 +18,53 @@ class ManageItemPage extends Component {
     price: "",
     category: "",
     quality: "",
-    featured:"",
+    featured: "",
     notes: "",
     submitted: false,
     file: null,
     fileUrl: "",
-    filename: ""
+    filename: "",
+    updating: false,
+    url: window.location.search,
+    postId: ""
   };
+
+  componentDidMount() {
+    var url = window.location.search;
+    let postId;
+
+    // var updating = false;
+
+    if (url.indexOf("?post_id=") !== -1) {
+      postId = url.split("=")[1];
+      this.getPostData(postId);
+      //this.updateItem(postId);
+    }
+  }
+
+  // Gets post data for a post if we're editing
+  getPostData = id => {
+    console.log(id);
+    API.getItem(id)
+      .then(res => {
+        if (res) {
+          // If this post exists, prefill our cms forms with its data
+          this.setState({
+            barcode: res.data.barcode,
+            itemName: res.data.itemName,
+            price: res.data.price,
+            category: res.data.category,
+            quality: res.data.quality,
+            featured: res.data.featured,
+            notes: res.data.notes,
+            // If we have a post with this id, set a flag for us to know to update the post
+            // when we hit submit
+            updating: true
+          })
+        }
+      })
+      .catch(err => console.log(err));
+  }
 
   handleFileUpload = e => {
     const file = e.target.files[0]
@@ -64,8 +104,25 @@ class ManageItemPage extends Component {
   };
 
   handleFormSubmit = event => {
+    //event.preventDefault();
+    console.log("this is updating", this.state.updating);
+    
+    if (this.state.updating) {
+      var url = window.location.search;
+      if (url.indexOf("?post_id=") !== -1) {
+        this.state.postId = url.split("=")[1];
+        //this.getPostData(postId);
+        console.log(this.state.postId);
+        this.updateItem(this.state.postId);
+      }
+    }
+    else {
+      this.submitItem(event);
+    }
+  };
+
+  submitItem = event => {
     event.preventDefault();
-    console.log(this.state.barcode);
     let fixFileName = this.state.filename.split(' ').join('+');
     console.log(fixFileName);
     if (this.state.barcode) {
@@ -76,13 +133,31 @@ class ManageItemPage extends Component {
         category: this.state.category,
         quality: this.state.quality,
         featured: this.state.featured,
-        image: `https://s3.amazonaws.com/tag-this-app-adoelp/bucketFolder/${fixFileName}`,
+        //image: `https://s3.amazonaws.com/tag-this-app-adoelp/bucketFolder/${fixFileName}`,
         notes: this.state.notes
       })
         .then(res => this.successAlert())
-        .catch(err => console.log("this is not working ", err));
+        .catch(err => console.log("the submit is not working ", err));
     }
   };
+
+  updateItem = id => {
+    console.log(id);
+    API.updateItem(id,
+      {
+        barcode: this.state.barcode,
+        itemName: this.state.itemName,
+        price: this.state.price,
+        category: this.state.category,
+        quality: this.state.quality,
+        featured: this.state.featured,
+        //image: `https://s3.amazonaws.com/tag-this-app-adoelp/bucketFolder/${fixFileName}`,
+        notes: this.state.notes
+      })
+    .then(res => console.log("updateItem actually worked!", res.data))
+    .catch(err => console.log("the update is not working ", err));
+
+  }
 
 
   successAlert = () => {
@@ -105,6 +180,7 @@ class ManageItemPage extends Component {
                 value={this.state.barcode}
                 onChange={this.handleInputChange}
                 name="barcode"
+                id="barcode-input"
                 placeholder="Item Barcode (required)"
                 autoFocus
                 required
@@ -165,7 +241,7 @@ class ManageItemPage extends Component {
                 name="image"
                 onChange={this.handleFileUpload}
               />
-              <img src={this.state.fileUrl} style={{width: "25%"}}/>
+              <img src={this.state.fileUrl} style={{ width: "25%" }} />
             </div>
             <div className="form-group">
               <label htmlFor="notes-input">Notes</label>
@@ -181,16 +257,16 @@ class ManageItemPage extends Component {
             <FormBtn
               type="button"
               className="btn btn-primary mr-1"
-              onClick={this.submitFile}
-              disabled={!(this.state.barcode && this.state.fileUrl)}
+              onClick={this.handleFormSubmit}
+              disabled={!(this.state.barcode)}
             >
               Save{" "}
             </FormBtn>
-            <FormBtn 
-            type="submit"
-            className="btn btn-primary mr-1"
-            onClick={this.submitFile}
-            disabled={!(this.state.barcode && this.state.fileUrl)}
+            <FormBtn
+              type="submit"
+              className="btn btn-primary mr-1"
+              onClick={this.handleFormSubmit}
+              disabled={!(this.state.barcode)}
             >
               Save and Create New{" "}
             </FormBtn>
