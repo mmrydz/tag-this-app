@@ -53,10 +53,10 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             {loggedIn ? (
               <div className="navbar-nav">
-                <Link className="nav-item nav-link" to="#">
+                <Link className="nav-item nav-link" to="/">
                   Home
                 </Link>
-                <Link className="nav-item nav-link" to="#">
+                <Link className="nav-item nav-link" to="/adminhome">
                   Admin
                 </Link>
                 <Link
