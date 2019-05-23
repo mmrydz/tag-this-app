@@ -8,7 +8,7 @@
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "client": "cd client && npm run start",
-    "seed": "node scripts/seedDB.js",
+    "seed": "cd server && node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build",

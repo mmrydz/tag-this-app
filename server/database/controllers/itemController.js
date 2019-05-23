@@ -11,19 +11,28 @@ module.exports = {
     console.log(req.params.id);
     db.Item.findById(req.params.id)
       .then(dbItem => {
-        res.json(dbItem)
+        res.json(dbItem);
       })
       .catch(err => res.status(422).json(err));
   },
   findByFeatured: function(req, res) {
-    db.Item.findByFeatured(req.params.featured)
-      .then(dbItem => res.json(dbItem))
-      .catch(err => res.status(422).json(err));
+    db.Item.findAll({
+      where: {
+        featured: req.params.featured
+      }
+    }).then(function(dbItem) {
+      res.json(dbItem);
+    });
   },
+
   findByCategory: function(req, res) {
-    db.Item.findByCategory(req.params.category)
-      .then(dbItem => res.json(dbItem))
-      .catch(err => res.status(422).json(err));
+    db.Item.findAll({
+      where: {
+        category: req.params.category
+      }
+    }).then(function(dbItem) {
+      res.json(dbItem);
+    });
   },
   create: function(req, res) {
     console.log(req.body);
