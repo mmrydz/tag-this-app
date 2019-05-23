@@ -34,52 +34,46 @@ class Navbar extends Component {
     console.log(this.props);
 
     return (
-      <div>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <Link className="navbar-brand" to="/">
-            <img src="../logo1.png" height="100" />
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            {loggedIn ? (
-              <div className="navbar-nav">
-                <Link className="nav-item nav-link" to="/">
-                  Home
-                </Link>
-                <Link className="nav-item nav-link" to="/adminhome">
-                  Admin
-                </Link>
-                <Link
-                  className="nav-item nav-link"
-                  to="#"
-                  onClick={this.logout}
-                >
-                  Logout
-                </Link>
-              </div>
-            ) : (
-              <div className="navbar-nav">
-                <Link className="nav-item nav-link" to="/login">
-                  Login
-                </Link>
-                <Link className="nav-item nav-link" to="/signup">
-                  Sign Up
-                </Link>
-              </div>
-            )}
-          </div>
-        </nav>
-      </div>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <Link className="navbar-brand" to="/">
+          <img src="../logo1.png" height="100" />
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon" />
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          {loggedIn ? (
+            <div className="navbar-nav">
+              <Link className="nav-item nav-link" to="/">
+                Home
+              </Link>
+              <Link className="nav-item nav-link" to="/adminhome">
+                Admin
+              </Link>
+              <Link className="nav-item nav-link" to="#" onClick={this.logout}>
+                Logout
+              </Link>
+            </div>
+          ) : (
+            <div className="navbar-nav">
+              <Link className="nav-item nav-link" to="/login">
+                Login
+              </Link>
+              <Link className="nav-item nav-link" to="/signup">
+                Sign Up
+              </Link>
+            </div>
+          )}
+        </div>
+      </nav>
     );
   }
 }
