@@ -15,6 +15,11 @@ module.exports = {
       })
       .catch(err => res.status(422).json(err));
   },
+  findByFeatured: function(req, res) {
+    db.Item.findByFeatured(req.params.featured)
+      .then(dbItem => res.json(dbItem))
+      .catch(err => res.status(422).json(err));
+  },
   findByCategory: function(req, res) {
     db.Item.findByCategory(req.params.category)
       .then(dbItem => res.json(dbItem))
