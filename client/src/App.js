@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // pages
 import ItemManagePage from "./pages/itemManage";
 import AdminHomePage from "./pages/admin-home";
-import UpdateItemPage from "./pages/updateform";
+import UpdateItemPage from "./pages/Update";
 // components
 import Signup from "./components/sign-up";
 import LoginForm from "./components/login-form";
@@ -12,9 +12,8 @@ import Navbar from "./components/Navbar/index";
 //import Home from './components/home'
 import Items from "./pages/Items";
 import Event from "./components/EventContainer";
-import ItemsByCategory from "./components/ItemsByCategory/index"
-import ItemsByFeatured from "./components/ItemsByFeatured/index"
-
+import ItemsByCategory from "./components/ItemsByCategory/index";
+import ItemsByFeatured from "./components/ItemsByFeatured/index";
 
 class App extends Component {
   constructor() {
