@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -20,7 +19,6 @@ import Event from "./components/EventContainer";
 // import ItemCard from "../src/components/ItemCard";
 // import API from "../src/utils/API";
 
-
 class App extends Component {
   constructor() {
     super();
@@ -35,15 +33,14 @@ class App extends Component {
     this.componentDidMount = this.componentDidMount.bind(this);
     this.updateUser = this.updateUser.bind(this);
 
-    this.saveFavorite = this.saveFavorite.bind(this);
+    // this.saveFavorite = this.saveFavorite.bind(this);
     //    this.getItems = this.getItems.bind(this);
     //    this.updateItems = this.updateItems.bind(this);
-
   }
 
   componentDidMount() {
     this.getUser();
-    this.getItems();
+    // this.getItems();
   }
 
   updateUser(userObject) {
@@ -89,12 +86,10 @@ class App extends Component {
               render={() => (
                 <div className="homecontainer">
                   <Event />
-
                   {/* <ItemsByCategory />
-                  <ItemsByFeatured /> */}
+                  <ItemsByFeatured />
                   <Categories />
-                  <ItemCard />
-
+                  <ItemCard /> */}
                 </div>
               )}
             />
