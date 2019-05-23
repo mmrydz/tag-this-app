@@ -12,6 +12,7 @@ import Navbar from "./components/Navbar/index";
 //import Home from './components/home'
 import Items from "./pages/Items";
 import Event from "./components/EventContainer";
+import ItemsByCategory from "./components/ItemsByCategory/index"
 
 class App extends Component {
   constructor() {
@@ -86,6 +87,7 @@ class App extends Component {
               render={() => (
                 <div className="homecontainer">
                   <Event />
+                  <ItemsByCategory />
                 </div>
               )}
             />

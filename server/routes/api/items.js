@@ -6,13 +6,16 @@ const itemController = require("../../database/controllers/itemController");
 // Matches with "/items"
 router.route("/")
   .get(itemController.findAll)
+  .get(itemController.findByFeatured)
   .post(itemController.create);
 
 // Matches with "/items/:id"
-router
-  .route("/:id")
+router.route("/:id")
   .get(itemController.findById)
   .put(itemController.update)
   .delete(itemController.remove);
+
+router.route("/:category")
+  .get(itemController.findByCategory);
 
 module.exports = router;

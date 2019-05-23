@@ -9,6 +9,10 @@ export default {
   getItemsByCategory: function (category) {
     return axios.get("/api/items/" + category);
   },
+  // Gets all items that are featured
+  getItemsByFeatured: function (featured) {
+    return axios.get("/api/items/" + featured);
+  },
   // Gets the item with the given barcode
   getItem: function (barcode) {
     console.log(barcode);
