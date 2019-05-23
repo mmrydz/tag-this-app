@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import UpdateItem from "../components/updateform/index"
+import UpdateItem from "../components/UpdateForm";
 
 class UpdateItemPage extends Component {
   render() {
-    return (
-      <UpdateItem></UpdateItem>
-    );
+    return <UpdateItem />;
   }
 }
 

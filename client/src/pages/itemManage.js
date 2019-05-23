@@ -6,7 +6,7 @@ import {
   FeaturedInput,
   FormBtn,
   DeleteBtn
-} from "../components/ManageItem/newindex";
+} from "../components/ManageItem";
 import API from "../utils/API";
 import Alert from "../components/Alert/index";
 import axios from "axios";
@@ -61,20 +61,20 @@ class ManageItemPage extends Component {
             // If we have a post with this id, set a flag for us to know to update the post
             // when we hit submit
             updating: true
-          })
+          });
         }
       })
       .catch(err => console.log(err));
-  }
+  };
 
   handleFileUpload = e => {
-    const file = e.target.files[0]
+    const file = e.target.files[0];
     this.setState({
       fileUrl: URL.createObjectURL(file),
       file: e.target.files,
       filename: file.name
-    })
-  }
+    });
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -107,7 +107,7 @@ class ManageItemPage extends Component {
   handleFormSubmit = event => {
     //event.preventDefault();
     console.log("this is updating", this.state.updating);
-    
+
     if (this.state.updating) {
       var url = window.location.search;
       if (url.indexOf("?post_id=") !== -1) {
@@ -116,15 +116,14 @@ class ManageItemPage extends Component {
         console.log(this.state.postId);
         this.updateItem(this.state.postId);
       }
-    }
-    else {
+    } else {
       this.submitItem(event);
     }
   };
 
   submitItem = event => {
     event.preventDefault();
-    let fixFileName = this.state.filename.split(' ').join('+');
+    let fixFileName = this.state.filename.split(" ").join("+");
     console.log(fixFileName);
     if (this.state.barcode) {
       API.saveItem({
@@ -144,21 +143,19 @@ class ManageItemPage extends Component {
 
   updateItem = id => {
     console.log(id);
-    API.updateItem(id,
-      {
-        barcode: this.state.barcode,
-        itemName: this.state.itemName,
-        price: this.state.price,
-        category: this.state.category,
-        quality: this.state.quality,
-        featured: this.state.featured,
-        //image: `https://s3.amazonaws.com/tag-this-app-adoelp/bucketFolder/${fixFileName}`,
-        notes: this.state.notes
-      })
-    .then(res => console.log("updateItem actually worked!", res.data))
-    .catch(err => console.log("the update is not working ", err));
-
-  }
+    API.updateItem(id, {
+      barcode: this.state.barcode,
+      itemName: this.state.itemName,
+      price: this.state.price,
+      category: this.state.category,
+      quality: this.state.quality,
+      featured: this.state.featured,
+      //image: `https://s3.amazonaws.com/tag-this-app-adoelp/bucketFolder/${fixFileName}`,
+      notes: this.state.notes
+    })
+      .then(res => console.log("updateItem actually worked!", res.data))
+      .catch(err => console.log("the update is not working ", err));
+  };
 
   handleDelete = event => {
     var url = window.location.search;
@@ -166,8 +163,8 @@ class ManageItemPage extends Component {
       this.state.postId = url.split("=")[1];
       console.log(this.state.postId);
       this.deleteItem(this.state.postId);
-    }      
-  }
+    }
+  };
 
   deleteItem = id => {
     API.deleteItem(id)
@@ -176,10 +173,9 @@ class ManageItemPage extends Component {
   };
 
   successAlert = () => {
-    this.setState({ submitted: true })
+    this.setState({ submitted: true });
     console.log(this.state.submitted);
-
-  }
+  };
 
   render() {
     return (
@@ -200,7 +196,9 @@ class ManageItemPage extends Component {
                 autoFocus
                 required
               />
-              <small className={this.state.barcode ? "" : "red"}>Use the barcode scanner to add the barcode number</small>
+              <small className={this.state.barcode ? "" : "red"}>
+                Use the barcode scanner to add the barcode number
+              </small>
             </div>
             <div className="form-group">
               <label htmlFor="itemName">Name</label>
@@ -273,7 +271,7 @@ class ManageItemPage extends Component {
               type="button"
               className="btn btn-primary mr-1"
               onClick={this.handleFormSubmit}
-              disabled={!(this.state.barcode)}
+              disabled={!this.state.barcode}
             >
               Save{" "}
             </FormBtn>
@@ -281,18 +279,18 @@ class ManageItemPage extends Component {
               type="submit"
               className="btn btn-primary mr-1"
               onClick={this.handleFormSubmit}
-              disabled={!(this.state.barcode)}
+              disabled={!this.state.barcode}
             >
               Save and Create New{" "}
             </FormBtn>
             {/* <FormBtn type="button" className="btn btn-primary mt-1">
               Save and Update{" "}
             </FormBtn> */}
-            <FormBtn 
-            type="button"
-            className="btn btn-danger mr-1"
-            onClick={this.handleDelete}
-            disabled={!(this.state.barcode)}
+            <FormBtn
+              type="button"
+              className="btn btn-danger mr-1"
+              onClick={this.handleDelete}
+              disabled={!this.state.barcode}
             >
               Delete{" "}
             </FormBtn>
@@ -304,4 +302,3 @@ class ManageItemPage extends Component {
 }
 
 export default ManageItemPage;
-
