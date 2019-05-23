@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // pages
 import ItemManagePage from "./pages/itemManage";
 import AdminHomePage from "./pages/admin-home";
-import UpdateItemPage from "./pages/updateform";
+import UpdateItemPage from "./pages/Update";
 // components
 import Signup from "./components/sign-up";
 import LoginForm from "./components/login-form";
@@ -16,7 +16,6 @@ import Event from "./components/EventContainer";
 import Categories from "./components/Categories/index";
 import ItemCard from "./components/ItemCard/ItemCard";
 import API from "../src/utils/API";
-
 
 
 class App extends Component {

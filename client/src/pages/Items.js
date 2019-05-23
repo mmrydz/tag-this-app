@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ItemCard from "../components/ItemCard/ItemCard";
+import ItemCard from "../components/ItemCard";
 import API from "../utils/API";
 
 class Items extends Component {
