@@ -9,7 +9,7 @@ Arthur Doelp, Ben Leone, Tim Look, Meg Rydzewski
 
 Technologies Utilized: 
 ----------------------
-React.js, Bootstrap, MongoDB, Mongoose/Robo3T, axios, morgan, AWS' S3 for the images, bcryptjs, Passport for the admin authentication, Express Sessions, Redis for the "likes" counter, and barcodes/scanner hardware. It is deployed via Heroku/mLab.
+React.js, Bootstrap, MongoDB, Mongoose/Robo3T, axios, morgan, AWS' S3 for the images, bcryptjs, Passport for the admin authentication, Express Sessions, and barcodes/scanner hardware. It is deployed via Heroku/mLab.
 
 Installation:
 -------------
