@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // pages
 import ItemManagePage from "./pages/itemManage";
 import AdminHomePage from "./pages/admin-home";
-import UpdateItemPage from "./pages/updateform";
+import UpdateItemPage from "./pages/Update";
 // components
 import Signup from "./components/sign-up";
 import LoginForm from "./components/login-form";
@@ -13,22 +13,34 @@ import Navbar from "./components/Navbar/index";
 import Items from "./pages/Items";
 import Event from "./components/EventContainer";
 
+// import ItemsByCategory from "./components/ItemsByCategory/index";
+// import ItemsByFeatured from "./components/ItemsByFeatured/index";
+// import Categories from "./components/Categories/index";
+// import ItemCard from "../src/components/ItemCard";
+// import API from "../src/utils/API";
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
       loggedIn: false,
-      username: null
+      username: null,
+      featured: true,
+      category: ""
     };
 
     this.getUser = this.getUser.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
     this.updateUser = this.updateUser.bind(this);
-    this.saveFavorite = this.saveFavorite.bind(this);
+
+    // this.saveFavorite = this.saveFavorite.bind(this);
+    //    this.getItems = this.getItems.bind(this);
+    //    this.updateItems = this.updateItems.bind(this);
   }
 
   componentDidMount() {
     this.getUser();
+    // this.getItems();
   }
 
   updateUser(userObject) {
@@ -56,18 +68,6 @@ class App extends Component {
     });
   }
 
-  saveFavorite = id => {
-    console.log(id + "favorite saved! TEST from app.js");
-    this.setState({
-      items: this.state.items.map(item => {
-        if (item.id === id) {
-          item.favorite = !item.favorite;
-        }
-        return item;
-      })
-    });
-  };
-
   render() {
     return (
       <Router>
@@ -86,6 +86,10 @@ class App extends Component {
               render={() => (
                 <div className="homecontainer">
                   <Event />
+                  {/* <ItemsByCategory />
+                  <ItemsByFeatured />
+                  <Categories />
+                  <ItemCard /> */}
                 </div>
               )}
             />

@@ -6,7 +6,7 @@ import {
   FeaturedInput,
   FormBtn,
   DeleteBtn
-} from "../components/ManageItem/newindex";
+} from "../components/ManageItem";
 import API from "../utils/API";
 import Alert from "../components/Alert/index";
 import axios from "axios";
@@ -63,20 +63,20 @@ class ManageItemPage extends Component {
             // If we have a post with this id, set a flag for us to know to update the post
             // when we hit submit
             updating: true
-          })
+          });
         }
       })
       .catch(err => console.log(err));
-  }
+  };
 
   handleFileUpload = e => {
-    const file = e.target.files[0]
+    const file = e.target.files[0];
     this.setState({
       fileUrl: URL.createObjectURL(file),
       file: e.target.files,
       filename: file.name
-    })
-  }
+    });
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -140,7 +140,7 @@ class ManageItemPage extends Component {
       })
         .then(res => {
           this.successAlert();
-          //window.location.reload();
+          window.location.reload();
         })
         .catch(err => console.log("the submit is not working ", err));
     }
@@ -185,10 +185,9 @@ class ManageItemPage extends Component {
   };
 
   successAlert = () => {
-    this.setState({ submitted: true })
+    this.setState({ submitted: true });
     console.log(this.state.submitted);
-
-  }
+  };
 
   render() {
     return (
@@ -212,7 +211,9 @@ class ManageItemPage extends Component {
                 autoFocus
                 required
               />
-              <small className={this.state.barcode ? "" : "red"}>Use the barcode scanner to add the barcode number</small>
+              <small className={this.state.barcode ? "" : "red"}>
+                Use the barcode scanner to add the barcode number
+              </small>
             </div>
             <div className="form-group">
               <label htmlFor="itemName">Name</label>
@@ -285,7 +286,7 @@ class ManageItemPage extends Component {
               type="button"
               className="btn btn-primary mr-1"
               onClick={this.handleFormSubmit}
-              disabled={!(this.state.barcode)}
+              disabled={!this.state.barcode}
             >
               {this.state.updating ? "Update" : "Save"}{" "}
             </FormBtn>
@@ -293,7 +294,7 @@ class ManageItemPage extends Component {
               type="button"
               className="btn btn-primary mr-1"
               onClick={this.handleFormSubmit}
-              disabled={!(this.state.barcode)}
+              disabled={!this.state.barcode}
             >
               {this.state.updating ? "Save and Update Another" : "Save and Create New"}{" "}
             </FormBtn> */}
@@ -314,4 +315,3 @@ class ManageItemPage extends Component {
 }
 
 export default ManageItemPage;
-

@@ -11,15 +11,35 @@ module.exports = {
     console.log("findById itemController", req.params.id);
     db.Item.findOne({barcode: req.params.id})
       .then(dbItem => {
-        res.json(dbItem)
+        res.json(dbItem);
       })
       .catch(err => res.status(422).json(err));
   },
-  findByCategory: function(req, res) {
-    db.Item.findByCategory(req.params.category)
-      .then(dbItem => res.json(dbItem))
-      .catch(err => res.status(422).json(err));
+
+  findByFeatured: function(req, res) {
+    db.Item.findAll({
+      where: {
+        featured: req.params.featured
+      }
+
+    }).then(function(dbItem) {
+      res.json(dbItem);
+    });
   },
+
+
+  findByCategory: function(req, res) {
+    db.Item.findAll({
+      where: {
+        category: req.params.category
+      }
+
+    }).then(function(dbItem) {
+      res.json(dbItem);
+    });
+
+  },
+
   create: function(req, res) {
     console.log(req.body);
     db.Item.create(req.body)
