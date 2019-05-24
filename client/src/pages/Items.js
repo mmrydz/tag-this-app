@@ -16,8 +16,10 @@ class Items extends Component {
   }
 
   render() {
-    return <ItemCard items={this.state.items} />;
-  }
+    return (
+      <ItemCard items={this.state.items} />
+      
+    )
 }
-
+}
 export default Items;
