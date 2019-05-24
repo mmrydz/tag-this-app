@@ -36,7 +36,7 @@ class ManageItemPage extends Component {
 
     // var updating = false;
 
-    if (url.indexOf("?post_id=") !== -1) {
+    if (url.indexOf("?item_id=") !== -1) {
       postId = url.split("=")[1];
       this.getPostData(postId);
       //this.updateItem(postId);
@@ -58,6 +58,8 @@ class ManageItemPage extends Component {
             quality: res.data.quality,
             featured: res.data.featured,
             notes: res.data.notes,
+            fileUrl: res.data.image,
+            image: res.data.image,
             // If we have a post with this id, set a flag for us to know to update the post
             // when we hit submit
             updating: true
@@ -84,7 +86,7 @@ class ManageItemPage extends Component {
   };
 
   submitFile = event => {
-    event.persist();
+    //event.persist();
     const formData = new FormData();
     formData.append("file", this.state.file[0]);
     axios
@@ -95,36 +97,36 @@ class ManageItemPage extends Component {
       })
       .then(response => {
         // handle your response;
-        console.log("it worked!", response);
-        this.handleFormSubmit(event);
+        console.log("Successfully submitted a file to S3! It worked!", response);
+        //this.handleFormSubmit(event);
       })
       .catch(error => {
         // handle your error
-        console.log("it did not work", error);
+        console.log("it did not Submit a file to S3", error);
       });
   };
 
   handleFormSubmit = event => {
     //event.preventDefault();
     console.log("this is updating", this.state.updating);
-
     if (this.state.updating) {
       var url = window.location.search;
-      if (url.indexOf("?post_id=") !== -1) {
+      if (url.indexOf("?item_id=") !== -1) {
         this.state.postId = url.split("=")[1];
         //this.getPostData(postId);
         console.log(this.state.postId);
+        this.submitFile();
         this.updateItem(this.state.postId);
       }
-    } else {
+    }
+    else {
+      //this.submitFile();
       this.submitItem(event);
     }
   };
 
   submitItem = event => {
     event.preventDefault();
-    let fixFileName = this.state.filename.split(" ").join("+");
-    console.log(fixFileName);
     if (this.state.barcode) {
       API.saveItem({
         barcode: this.state.barcode,
@@ -133,38 +135,48 @@ class ManageItemPage extends Component {
         category: this.state.category,
         quality: this.state.quality,
         featured: this.state.featured,
-        //image: `https://s3.amazonaws.com/tag-this-app-adoelp/bucketFolder/${fixFileName}`,
+        // image: `https://s3.amazonaws.com/tag-this-app-adoelp/bucketFolder/${fixFileName}`,
         notes: this.state.notes
       })
-        .then(res => this.successAlert())
+        .then(res => {
+          this.successAlert();
+          window.location.reload();
+        })
         .catch(err => console.log("the submit is not working ", err));
     }
   };
 
   updateItem = id => {
     console.log(id);
-    API.updateItem(id, {
-      barcode: this.state.barcode,
-      itemName: this.state.itemName,
-      price: this.state.price,
-      category: this.state.category,
-      quality: this.state.quality,
-      featured: this.state.featured,
-      //image: `https://s3.amazonaws.com/tag-this-app-adoelp/bucketFolder/${fixFileName}`,
-      notes: this.state.notes
-    })
-      .then(res => console.log("updateItem actually worked!", res.data))
+    let fixFileName = this.state.filename.split(' ').join('+');
+    console.log(fixFileName);
+    API.updateItem(id,
+      {
+        barcode: this.state.barcode,
+        itemName: this.state.itemName,
+        price: this.state.price,
+        category: this.state.category,
+        quality: this.state.quality,
+        featured: this.state.featured,
+        image: `https://s3.amazonaws.com/tag-this-app-adoelp/bucketFolder/${fixFileName}`,
+        notes: this.state.notes
+      })
+      .then(res => {
+        console.log("updateItem actually worked!", res.data);
+        window.location.href = "/update";
+      })
       .catch(err => console.log("the update is not working ", err));
-  };
+
+  }
 
   handleDelete = event => {
     var url = window.location.search;
-    if (url.indexOf("?post_id=") !== -1) {
+    if (url.indexOf("?item_id=") !== -1) {
       this.state.postId = url.split("=")[1];
       console.log(this.state.postId);
       this.deleteItem(this.state.postId);
     }
-  };
+  }
 
   deleteItem = id => {
     API.deleteItem(id)
@@ -180,8 +192,11 @@ class ManageItemPage extends Component {
   render() {
     return (
       <div className="container">
-        {this.state.submitted ? <Alert /> : null}
-        <h3 className="text-center">Manage Items</h3>
+        {this.state.submitted ? <Alert
+          itemName={this.state.itemName}
+          updating={this.state.updating}
+        /> : null}
+        <h3 className="text-center">{this.state.updating ? "Update Existing Item" : "Create New Item"}</h3>
         <div className="justify-content-center">
           <form>
             <div className="form-group">
@@ -246,7 +261,7 @@ class ManageItemPage extends Component {
               value={this.state.featured}
               onChange={this.handleInputChange}
             />
-            <div className="form-group">
+            {this.state.updating ? <div className="form-group">
               <label htmlFor="imagefile">Image</label>
               <input
                 type="file"
@@ -255,7 +270,7 @@ class ManageItemPage extends Component {
                 onChange={this.handleFileUpload}
               />
               <img src={this.state.fileUrl} style={{ width: "25%" }} />
-            </div>
+            </div> : null}
             <div className="form-group">
               <label htmlFor="notes-input">Notes</label>
               <textarea
@@ -273,27 +288,25 @@ class ManageItemPage extends Component {
               onClick={this.handleFormSubmit}
               disabled={!this.state.barcode}
             >
-              Save{" "}
+              {this.state.updating ? "Update" : "Save"}{" "}
             </FormBtn>
-            <FormBtn
-              type="submit"
+            {/* <FormBtn
+              type="button"
               className="btn btn-primary mr-1"
               onClick={this.handleFormSubmit}
               disabled={!this.state.barcode}
             >
-              Save and Create New{" "}
-            </FormBtn>
-            {/* <FormBtn type="button" className="btn btn-primary mt-1">
-              Save and Update{" "}
+              {this.state.updating ? "Save and Update Another" : "Save and Create New"}{" "}
             </FormBtn> */}
-            <FormBtn
+            {this.state.updating ? <FormBtn
               type="button"
               className="btn btn-danger mr-1"
               onClick={this.handleDelete}
-              disabled={!this.state.barcode}
+              disabled={!(this.state.barcode)}
             >
               Delete{" "}
-            </FormBtn>
+            </FormBtn> : null}
+
           </form>
         </div>
       </div>
