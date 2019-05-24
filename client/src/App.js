@@ -16,7 +16,7 @@ import Event from "./components/EventContainer";
 // import ItemsByCategory from "./components/ItemsByCategory/index";
 // import ItemsByFeatured from "./components/ItemsByFeatured/index";
 // import Categories from "./components/Categories/index";
-// import ItemCard from "../src/components/ItemCard";
+import ItemCard from "../src/components/ItemCard";
 // import API from "../src/utils/API";
 
 class App extends Component {
@@ -88,8 +88,8 @@ class App extends Component {
                   <Event />
                   {/* <ItemsByCategory />
                   <ItemsByFeatured />
-                  <Categories />
-                  <ItemCard /> */}
+                  <Categories />*/}
+                  <Items /> 
                 </div>
               )}
             />
