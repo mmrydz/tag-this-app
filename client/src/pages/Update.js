@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import UpdateForm from "../components/UpdateForm";
+import UpdateForm from "../components/updateform/index";
 
 class UpdateItemPage extends Component {
   render() {
