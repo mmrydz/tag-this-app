@@ -1,12 +1,12 @@
 import React from "react";
 
-function Alert() {
+function Alert(props) {
   return (
     <div
       className="alert alert-success alert-dismissible fade show"
       role="alert"
     >
-      <strong>Success!</strong> You successfully created an item!{" "}
+      <strong>Success!</strong> You successfully {props.updating ? "updated" : "created"} an item! {props.itemName}{" "}
       <a href="#" className="alert-link">
         {" "}
         View

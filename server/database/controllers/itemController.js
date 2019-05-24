@@ -8,8 +8,8 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
-    console.log(req.params.id);
-    db.Item.findById(req.params.id)
+    console.log("findById itemController", req.params.id);
+    db.Item.findOne({barcode: req.params.id})
       .then(dbItem => {
         res.json(dbItem)
       })
@@ -28,7 +28,7 @@ module.exports = {
   },
   update: function(req, res) {
     console.log("This is the request at itemController 30", req.body);
-    db.Item.findOneAndUpdate({ _id: req.params.id }, req.body)
+    db.Item.findOneAndUpdate({ barcode: req.params.id }, req.body)
       .then(dbItem => res.json(dbItem))
       .catch(err => res.status(422).json(err));
   },

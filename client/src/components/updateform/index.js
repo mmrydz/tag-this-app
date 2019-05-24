@@ -23,8 +23,8 @@ class UpdateItem extends Component {
         API.getItem(this.state.barcode)
         .then(res => {
             this.setState({ item: res.data });
-            console.log(this.state.item._id);
-            window.location.href= "/manage?post_id=" + this.state.item._id;
+            console.log(this.state.barcode);
+            window.location.href= "/manage?item_id=" + this.state.barcode;
         })
         .catch(err => console.log(err));
     }
