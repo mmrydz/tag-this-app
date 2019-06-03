@@ -22,6 +22,7 @@ export function CategoryInput(props) {
         <option value="Cars">Cars</option>
         <option value="Collectibles">Collectibles</option>
         <option value="Electronics">Electronics</option>
+        <option value="Food and Beverages">Food and Beverages</option>
         <option value="Furniture">Furniture</option>
         <option value="Housewares">Housewares</option>
         <option value="Lawn Tools">Lawn Tools</option>
