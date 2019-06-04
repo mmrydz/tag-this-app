@@ -111,6 +111,9 @@ app.use(passport.session()) // calls the deserializeUser
 // Routes
 app.use('/user', user)
 app.use(routes);
+app.get('/*', function(req, res) {
+  res.sendFile('path to index.html');
+})
 
 // Connect to the MongoDB Database ----------------------------
 const MONGODB_URI =
