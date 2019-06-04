@@ -7,7 +7,7 @@ function Alert(props) {
       role="alert"
     >
       <strong>Success!</strong> You successfully {props.updating ? "updated" : "created"} an item! {props.itemName}{" "}
-      <a href="#" className="alert-link">
+      <a href="/manage" className="alert-link">
         {" "}
         View
       </a>
